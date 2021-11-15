@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-08 18:09:35
  * @LastEditors: 41
- * @LastEditTime: 2021-11-15 14:12:04
+ * @LastEditTime: 2021-11-15 16:26:54
  * @Description:
  */
 import * as echarts from 'echarts'
@@ -22,7 +22,7 @@ export const option = {
     }
   },
   legend: {
-    data: ['低温', '高温']
+    data: ['低温', '温差']
   },
   toolbox: {
     feature: {
@@ -76,7 +76,7 @@ export const option = {
       data: [20, 8, 11, 34, 20, 34, 31]
     },
     {
-      name: '高温',
+      name: '温差',
       type: 'line',
       stack: 'Total',
       smooth: true,
