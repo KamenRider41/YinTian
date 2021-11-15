@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-13 20:10:54
  * @LastEditors: 41
- * @LastEditTime: 2021-11-13 21:45:50
+ * @LastEditTime: 2021-11-15 09:29:12
  * @Description:
 -->
 <template>
@@ -36,7 +36,7 @@ export default {
 }
 h3{
     position: relative;
-    font-size: 50px;
+    font-size: 20px;
     color:#544e58
 }
 h3:before{
@@ -51,14 +51,12 @@ h3:before{
     background-clip: text;
     /* 谷歌浏览器适配 */
     -webkit-background-clip: text;
-
     /* 制作一个斜矩形遮罩 使用polygon方法 */
     /* 矩形需要定义四个角的坐标，顺时针方向定义
     分别位左上，右上，右下，左下  单位为百分比*/
     clip-path:polygon(-20% 0%,0% 0%, -10% 100%,-30% 100%);
     /* 增加动画 */
     animation:light 2s infinite;
-
 }
 
 @keyframes light{
@@ -69,7 +67,6 @@ h3:before{
         clip-path:polygon(100% 0%,120% 0%, 110% 100%,90% 100%);
     }
     100%{
-
         clip-path:polygon(-20% 0%,0% 0%, -10% 100%,-30% 100%);
     }
 }

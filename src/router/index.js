@@ -2,12 +2,12 @@
  * @Author: 41
  * @Date: 2021-11-13 20:05:27
  * @LastEditors: 41
- * @LastEditTime: 2021-11-13 20:12:28
+ * @LastEditTime: 2021-11-15 09:24:10
  * @Description:
  */
 import Vue from 'vue'
 import Router from 'vue-router'
-import temp from '@/components/temp'
+import home from '@/components/home'
 
 Vue.use(Router)
 
@@ -15,8 +15,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: temp
+      name: 'home',
+      component: home
     }
   ]
 })
