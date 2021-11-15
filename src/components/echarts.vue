@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 10:48:28
  * @LastEditors: 41
- * @LastEditTime: 2021-11-15 14:12:29
+ * @LastEditTime: 2021-11-15 16:29:35
  * @Description:
 -->
 <template>
@@ -107,9 +107,9 @@ export default {
     // 指定图表的配置项和数据
     // 使用刚指定的配置项和数据显示图表。
     this.myChart.setOption(this.options)
-    console.log(this.Echarts_date)
-    console.log(this.Echarts_low)
-    console.log(this.Echarts_high)
+    // console.log(this.Echarts_date)
+    // console.log(this.Echarts_low)
+    // console.log(this.Echarts_high)
   }
 }
 </script>

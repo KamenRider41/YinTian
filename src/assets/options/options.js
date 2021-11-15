@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-08 18:09:35
  * @LastEditors: 41
- * @LastEditTime: 2021-11-15 16:26:54
+ * @LastEditTime: 2021-11-15 16:30:55
  * @Description:
  */
 import * as echarts from 'echarts'
@@ -10,7 +10,7 @@ import * as echarts from 'echarts'
 export const option = {
   color: ['#00DDFF', '#FF0087'],
   title: {
-    text: '天气之子哇！'
+    text: '             天气之子哇！'
   },
   tooltip: {
     trigger: 'axis',

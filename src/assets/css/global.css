@@ -1,4 +1,18 @@
+:root {
+    --background-color: #f4f5f7;
+    --border-color: #34495e;
+    --text-color: #7591AD;
+    --color1: #EC3E27;
+    --color2: #fd79a8;
+    --color3: #0984e3;
+    --color4: #00b894;
+    --color5: #fdcb6e;
+    --color6: #e056fd;
+    --color7: #F97F51;
+    --color8: #BDC581;
+}
 *{
     margin: 0;
     padding: 0;
 }
+

@@ -2,18 +2,25 @@
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
  * @LastEditors: 41
- * @LastEditTime: 2021-11-15 14:13:11
+ * @LastEditTime: 2021-11-15 20:55:34
  * @Description:
 -->
 <template>
-    <div>
+    <div class='container'>
         <!-- 简简单单的标题组件 -->
         <Title></Title>
         <!-- 将天气信息传给组件显示！ -->
         <Tqyb :weatherList="weatherList" @changeWeather="updateWeather($event)"></Tqyb>
-        <!-- 低温高温的echarts表格！让人切身感受温差！ -->
-        <Echarts :options="options" :width='echartsWidth' :Echarts_date="Echarts_date" :Echarts_low="Echarts_low" :Echarts_high="Echarts_high"></Echarts>
-        <h1>{{this.weather}}</h1>
+        <div class="subcontainer">
+          <!-- 低温高温的echarts表格！让人切身感受温差！ -->
+          <Echarts :options="options" :width='echartsWidth' :Echarts_date="Echarts_date" :Echarts_low="Echarts_low" :Echarts_high="Echarts_high"></Echarts>
+        </div>
+        <!-- 搜索框 -->
+        <div class="subcontainer2">
+          <Sousuo v-model="city" @getSearch="getSearch($event)">{{city}}</Sousuo>
+          <h1>{{this.weather}}</h1>
+          <h1>{{this.city}}</h1>
+        </div>
     </div>
 </template>
 
@@ -21,16 +28,19 @@
 import Title from '@/components/title.vue'
 import Tqyb from '@/components/tyqb.vue'
 import Echarts from '@/components/echarts.vue'
+import Sousuo from '@/components/sousuo.vue'
 import {option} from '@/assets/options/options'
 export default {
   components: {
     Title,
     Tqyb,
-    Echarts
+    Echarts,
+    Sousuo
   },
   data () {
     return {
       city: '长沙',
+      tempcity: '', // 如果没有查询到结果就还原city提示错误
       weather: '',
       weatherList: [],
       options: option,
@@ -50,6 +60,9 @@ export default {
           that.weatherList = response.data.data.forecast // 获得天气列表的信息
           that.weather = response.data.data.forecast[0].type // 当前天气默认为今天的天气
           // 获得天气列表的日期信息
+          that.Echarts_date = []
+          that.Echarts_low = []
+          that.Echarts_high = []
           response.data.data.forecast.forEach(item => {
             that.Echarts_date.push(item.date)
             that.Echarts_low.push(parseInt(item.low.substring(2)))
@@ -62,6 +75,13 @@ export default {
       console.log('get' + weather)
       this.weather = weather
     },
+    getSearch (city) {
+      if (city) {
+        this.tempcity = this.city
+        this.city = city
+        this.searchWeather()
+      }
+    },
     check_data () {
       console.log(this.weatherList)
       console.log(this.Echarts_date)
@@ -71,11 +91,28 @@ export default {
     this.searchWeather() // 初始化的时候调用一次接口
   },
   mounted () {
-    this.check_data()
+    // this.check_data()
   }
 }
 </script>
 
 <style scoped>
-
+.container{
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--background-color);
+    position: absolute;
+    font-family: 'Montserrat', sans-serif, Arial, 'Microsoft Yahei';
+}
+.subcontainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.subcontainer2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 </style>
