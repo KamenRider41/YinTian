@@ -2,13 +2,13 @@
  * @Author: 41
  * @Date: 2021-11-15 09:30:46
  * @LastEditors: 41
- * @LastEditTime: 2021-11-15 10:17:19
+ * @LastEditTime: 2021-11-15 10:45:53
  * @Description:
 -->
 <template>
     <div class="week-container">
         <ul class="week-list" >
-            <li id="day1" v-for="(item,index) in weatherList" :key="index">
+            <li id="day1" v-for="(item,index) in weatherList" :key="index" @click="get_weather(index)">
                 <span :class="iconObj[item.type]"></span>
                 <span class="day-name">{{item.type}}</span>
                 <span class="day-name">{{item.date}}</span>
@@ -67,7 +67,10 @@ export default {
     }
   },
   methods: {
-
+    get_weather (index) {
+      console.log(this.weatherList[index].type) // 需要把这个传递给父组件
+      this.$emit('changeWeather', this.weatherList[index].type)
+    }
   }
 }
 </script>
@@ -85,10 +88,10 @@ export default {
     justify-content: center;
     align-items: center;
 }
-.week-list ul{
-    /* list-style: none; */
-    /* margin-left: 50px; */
-}
+/* .week-list ul{
+     list-style: none;
+     margin-left: 50px;
+} */
 .week-list li {
     /* background-color: red; */
 

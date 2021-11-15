@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
  * @LastEditors: 41
- * @LastEditTime: 2021-11-15 10:15:39
+ * @LastEditTime: 2021-11-15 10:46:49
  * @Description:
 -->
 <template>
@@ -10,7 +10,8 @@
         <!-- 简简单单的标题组件 -->
         <Title></Title>
         <!-- 将天气信息传给组件显示！ -->
-        <Tqyb :weatherList="weatherList"></Tqyb>
+        <Tqyb :weatherList="weatherList" @changeWeather="updateWeather($event)"></Tqyb>
+        <h1>{{this.weather}}</h1>
     </div>
 </template>
 
@@ -25,6 +26,7 @@ export default {
   data () {
     return {
       city: '长沙',
+      weather: '123',
       weatherList: []
     }
   },
@@ -37,6 +39,10 @@ export default {
         //   console.log(response.data.data.forecast)
           that.weatherList = response.data.data.forecast
         })
+    },
+    updateWeather (weather) {
+      console.log('get' + weather)
+      this.weather = weather
     }
   },
   mounted () {
