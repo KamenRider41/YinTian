@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
  * @LastEditors: 41
- * @LastEditTime: 2021-11-15 13:46:26
+ * @LastEditTime: 2021-11-15 14:13:11
  * @Description:
 -->
 <template>
@@ -12,7 +12,7 @@
         <!-- 将天气信息传给组件显示！ -->
         <Tqyb :weatherList="weatherList" @changeWeather="updateWeather($event)"></Tqyb>
         <!-- 低温高温的echarts表格！让人切身感受温差！ -->
-        <Echarts :options="options" :width='echartsWidth' :Echarts_date="Echarts_date"></Echarts>
+        <Echarts :options="options" :width='echartsWidth' :Echarts_date="Echarts_date" :Echarts_low="Echarts_low" :Echarts_high="Echarts_high"></Echarts>
         <h1>{{this.weather}}</h1>
     </div>
 </template>
@@ -35,7 +35,9 @@ export default {
       weatherList: [],
       options: option,
       echartsWidth: '600px',
-      Echarts_date: []
+      Echarts_date: [],
+      Echarts_low: [],
+      Echarts_high: []
     }
   },
   methods: {
@@ -50,6 +52,9 @@ export default {
           // 获得天气列表的日期信息
           response.data.data.forecast.forEach(item => {
             that.Echarts_date.push(item.date)
+            that.Echarts_low.push(parseInt(item.low.substring(2)))
+            that.Echarts_high.push(parseInt(item.high.substring(2)) - parseInt(item.low.substring(2)))
+            // console.log(parseInt(item.high.substring(2)))
           })
         })
     },

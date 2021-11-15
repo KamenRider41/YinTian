@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 10:48:28
  * @LastEditors: 41
- * @LastEditTime: 2021-11-15 13:45:22
+ * @LastEditTime: 2021-11-15 14:12:29
  * @Description:
 -->
 <template>
@@ -31,8 +31,15 @@ export default {
     Echarts_date: {
       type: Array,
       default: null
+    },
+    Echarts_low: {
+      type: Array,
+      default: null
+    },
+    Echarts_high: {
+      type: Array,
+      default: null
     }
-
   },
   data () {
     return {
@@ -64,6 +71,22 @@ export default {
           notMerge: true
         })
       }
+    },
+    Echarts_low () {
+      if (this.myChart) {
+        this.options.series[0].data = this.Echarts_low
+        this.myChart.setOption(this.options, {
+          notMerge: true
+        })
+      }
+    },
+    Echarts_high () {
+      if (this.myChart) {
+        this.options.series[1].data = this.Echarts_high
+        this.myChart.setOption(this.options, {
+          notMerge: true
+        })
+      }
     }
   },
   computed: {
@@ -85,6 +108,8 @@ export default {
     // 使用刚指定的配置项和数据显示图表。
     this.myChart.setOption(this.options)
     console.log(this.Echarts_date)
+    console.log(this.Echarts_low)
+    console.log(this.Echarts_high)
   }
 }
 </script>

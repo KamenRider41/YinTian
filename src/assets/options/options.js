@@ -2,53 +2,11 @@
  * @Author: 41
  * @Date: 2021-11-08 18:09:35
  * @LastEditors: 41
- * @LastEditTime: 2021-11-15 12:16:36
+ * @LastEditTime: 2021-11-15 14:12:04
  * @Description:
  */
 import * as echarts from 'echarts'
 
-export const options1 = {
-  // color: [],
-  title: {
-    text: 'ECharts 入门示例'
-  },
-  tooltip: {},
-  legend: {
-    data: ['销量']
-  },
-  xAxis: {
-    data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
-  },
-  yAxis: {},
-  series: [
-    {
-      name: '销量',
-      type: 'bar',
-      data: [5, 20, 36, 10, 10, 20]
-    }
-  ]
-}
-export const options2 = {
-  // color: ['tomato'],
-  title: {
-    text: 'ECharts 入门示例'
-  },
-  tooltip: {},
-  legend: {
-    data: ['销量']
-  },
-  xAxis: {
-    data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
-  },
-  yAxis: {},
-  series: [
-    {
-      name: '销量',
-      type: 'bar',
-      data: [5, 20, 36, 50, 50, 100]
-    }
-  ]
-}
 export const option = {
   color: ['#00DDFF', '#FF0087'],
   title: {
@@ -72,9 +30,9 @@ export const option = {
     }
   },
   grid: {
-    left: '3%',
-    right: '4%',
-    bottom: '3%',
+    left: '5%',
+    right: '6%',
+    bottom: '2%',
     containLabel: true
   },
   xAxis: [
