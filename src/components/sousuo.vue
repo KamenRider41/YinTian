@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 16:38:42
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-11-16 14:45:05
+ * @LastEditTime: 2021-11-16 15:20:37
  * @Description:
 -->
 <template>
@@ -50,34 +50,56 @@ export default {
       console.log(this.city);
     },
     locationCity() {
+      let that = this;
+
       if (window.navigator.geolocation) {
         let options = {
           enableHighAccuracy: true,
-          timeout: 5000,
+          timeout: 2000,
           maximumAge: 0,
         };
         window.navigator.geolocation.getCurrentPosition(
-          (position) => {
-            let longitude = position.coords.longitude;
-            let latitude = position.coords.latitude;
-
-            // BaiduMap JS API
-            let point = new BMap.Point(longitude, latitude);
-
-            let geocoder = new BMap.Geocoder();
-            geocoder.getLocation(point, (rs) => {
-              let addComp = rs.addressComponents;
-              console.log("您所在城市：" + addComp.city);
-              this.$emit("getSearch", addComp.city);
-            });
-          },
-          (error) => {
-            console.log(error);
-          },
+          success,
+          error,
           options
         );
       } else {
         alert("该浏览器不支持定位");
+      }
+      
+      // 成功回调
+      function success(position) {
+        let longitude = position.coords.longitude;
+        let latitude = position.coords.latitude;
+        console.log("经纬度:", longitude, latitude);
+
+        // BaiduMap JS API
+        let point = new BMap.Point(longitude, latitude);
+
+        let geocoder = new BMap.Geocoder();
+        geocoder.getLocation(point, (rs) => {
+          let addComp = rs.addressComponents;
+          console.log("您所在城市：" + addComp.city);
+          that.$emit("getSearch", addComp.city);
+        });
+      }
+
+      // 失败回调
+      function error(err) {
+        switch (err.code) {
+          case 1:
+            alert("位置服务被拒绝！");
+            break;
+          case 2:
+            alert("暂时获取不到位置信息！");
+            break;
+          case 3:
+            alert("获取信息超时！");
+            break;
+          case 4:
+            alert("未知错误！");
+            break;
+        }
       }
     },
   },
