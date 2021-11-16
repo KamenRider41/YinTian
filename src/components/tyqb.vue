@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 09:30:46
  * @LastEditors: 41
- * @LastEditTime: 2021-11-16 14:17:05
+ * @LastEditTime: 2021-11-16 20:52:48
  * @Description:
 -->
 <template>
@@ -102,6 +102,7 @@ export default {
         list.classList.remove('xue')
       }
       this.$emit('changeWeather', this.weatherList[index].type)
+      this.$emit('changeDate', this.weatherList[index].date)
     }
   }
 }
@@ -119,25 +120,46 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 10px 10px 80px -5px rgba(0, 0, 0, 0.4);
+    /* box-shadow: 10px 10px 80px -5px rgba(0, 0, 0, 0.4); */
+        box-shadow: inset 0 8px 60px rgba(0, 0, 0, 0.4),
+                inset 0 8px 8px rgba(0, 0, 0, 0.4),
+                inset 0 -4px 4px rgba(0, 0, 0, 0.4);
 }
 .yu{
-  box-shadow: 10px 10px 80px -5px rgba(196, 58, 134, 0.4);
+  /* box-shadow: 10px 10px 80px -5px rgba(196, 58, 134, 0.4); */
+    box-shadow: inset 0 8px 60px rgba(196, 58, 134, 0.4),
+                inset 0 8px 8px rgba(196, 58, 134, 0.4),
+                inset 0 -4px 4px rgba(196, 58, 134, 0.4);
 }
 .qing{
-  box-shadow: 10px 10px 80px -5px rgba(223, 177, 25, 0.4);
+  /* box-shadow: 10px 10px 80px -5px rgba(223, 177, 25, 0.4); */
+      box-shadow: inset 0 8px 60px rgba(223, 177, 25, 0.4),
+                inset 0 8px 8px rgba(223, 177, 25, 0.4),
+                inset 0 -4px 4px rgba(223, 177, 25, 0.4);
 }
 .cloud{
-  box-shadow: 10px 10px 80px -5px rgba(136, 119, 212, 0.4);
+  /* box-shadow: 10px 10px 80px -5px rgba(136, 119, 212, 0.4); */
+        box-shadow: inset 0 8px 60px rgba(136, 119, 212, 0.4),
+                inset 0 8px 8px rgba(136, 119, 212, 0.4),
+                inset 0 -4px 4px rgba(136, 119, 212, 0.4);
 }
 .yin{
-  box-shadow: 10px 10px 80px -5px rgba(77, 74, 74, 0.4);
+  /* box-shadow: 10px 10px 80px -5px rgba(77, 74, 74, 0.4); */
+         box-shadow: inset 0 8px 60px rgba(77, 74, 74, 0.4),
+                inset 0 8px 8px rgba(77, 74, 74, 0.4),
+                inset 0 -4px 4px rgba(77, 74, 74, 0.4);
 }
 .xue{
-  box-shadow: 10px 10px 80px -5px rgba(16, 64, 194, 0.4);
+  /* box-shadow: 10px 10px 80px -5px rgba(16, 64, 194, 0.4); */
+           box-shadow: inset 0 8px 60px rgba(16, 64, 194, 0.4),
+                inset 0 8px 8px rgba(16, 64, 194, 0.4),
+                inset 0 -4px 4px rgba(16, 64, 194, 0.4);
 }
 .other{
-  box-shadow: 10px 10px 80px -5px rgba(0, 0, 0, 0.4);
+  /* box-shadow: 10px 10px 80px -5px rgba(0, 0, 0, 0.4); */
+            box-shadow: inset 0 8px 60px rgba(0, 0, 0, 0.4),
+                inset 0 8px 8px rgba(0, 0, 0, 0.4),
+                inset 0 -4px 4px rgba(0, 0, 0, 0.4);
 }
 /* .week-list ul{
      list-style: none;

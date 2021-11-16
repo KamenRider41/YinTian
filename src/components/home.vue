@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
  * @LastEditors: 41
- * @LastEditTime: 2021-11-16 16:46:47
+ * @LastEditTime: 2021-11-16 20:54:12
  * @Description:
 -->
 <template>
@@ -14,6 +14,7 @@
            <Title v-if="dev" class="title"></Title>
            <h3>{{this.city}}</h3>
            <h3>{{this.weather}}</h3>
+           <h3>{{this.date}}</h3>
         </div>
 
         <div class="flex-right">
@@ -25,7 +26,7 @@
       </div>
       <div class="subject">
         <!-- 将天气信息传给组件显示！ -->
-        <Tqyb v-if="dev" class="echarts_tyqb" :weatherList="weatherList" @changeWeather="updateWeather($event)"></Tqyb>
+        <Tqyb v-if="dev" class="echarts_tyqb" :weatherList="weatherList" @changeDate="updateDate($event)" @changeWeather="updateWeather($event)"></Tqyb>
         <div class="subcontainer">
           <!-- 低温高温的echarts表格！让人切身感受温差！ -->
           <Echarts v-if="dev&this.switchFlag" :options="options" :width='echartsWidth' :height='echartsheight' :Echarts_date="Echarts_date" :Echarts_low="Echarts_low" :Echarts_high="Echarts_high"></Echarts>
@@ -64,6 +65,7 @@ export default {
       city: '长沙',
       tempcity: '', // 如果没有查询到结果就还原city提示错误
       weather: '',
+      date: '',
       weatherList: [],
       options: option,
       echartsWidth: '600px',
@@ -101,6 +103,9 @@ export default {
     updateWeather (weather) {
       console.log('get' + weather)
       this.weather = weather
+    },
+    updateDate (date) {
+      this.date = date
     },
     getSearch (city) {
       if (city) {
@@ -196,6 +201,9 @@ button{
 }
 .myswitch{
   margin-right: 30px;
+}
+.echarts_tyqb{
+  transition: 0.5s;
 }
 .subcontainer{
   display: flex;
