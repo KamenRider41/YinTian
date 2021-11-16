@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-16 08:46:19
  * @LastEditors: 41
- * @LastEditTime: 2021-11-16 09:40:02
+ * @LastEditTime: 2021-11-16 10:04:39
  * @Description:
 -->
 
@@ -37,7 +37,8 @@ export default {
     style () {
       return {
         height: this.height,
-        width: this.width
+        width: this.width,
+        animation: 'turn ' + this.speed + 's linear infinite'
       }
     }
   },

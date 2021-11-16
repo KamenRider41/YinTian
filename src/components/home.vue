@@ -2,28 +2,34 @@
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
  * @LastEditors: 41
- * @LastEditTime: 2021-11-16 09:37:26
+ * @LastEditTime: 2021-11-16 12:16:34
  * @Description:
 -->
 <template>
     <div class='container'>
+      <div class="header">
         <!-- 简简单单的标题组件 -->
-        <Title v-if="dev"></Title>
-        <!-- 将天气信息传给组件显示！ -->
-        <Tqyb v-if="dev" :weatherList="weatherList" @changeWeather="updateWeather($event)"></Tqyb>
-        <div class="subcontainer">
-          <!-- 低温高温的echarts表格！让人切身感受温差！ -->
-          <Echarts v-if="dev" :options="options" :width='echartsWidth' :Echarts_date="Echarts_date" :Echarts_low="Echarts_low" :Echarts_high="Echarts_high"></Echarts>
+        <div class="flex-left">
+           <Title v-if="dev" class="title"></Title>
+           <h3>{{this.city}}</h3>
+           <h3>{{this.weather}}</h3>
         </div>
         <!-- 搜索框 -->
-        <div class="subcontainer2">
+        <div class="flex-right">
           <Sousuo v-if="dev" v-model="city" @getSearch="getSearch($event)">{{city}}</Sousuo>
-          <!-- <h1>{{this.weather}}</h1>
-          <h1>{{this.city}}</h1> -->
         </div>
-        <Canvas v-if='dev' :width='canvas_width' :height='canvas_height' :speed='canvas_speed'></Canvas>
+      </div>
+      <div class="subject">
+        <!-- 将天气信息传给组件显示！ -->
+        <Tqyb v-if="dev" class="echarts_tyqb" :weatherList="weatherList" @changeWeather="updateWeather($event)"></Tqyb>
+        <div class="subcontainer">
+          <!-- 低温高温的echarts表格！让人切身感受温差！ -->
+          <Echarts v-if="dev" :options="options" :width='echartsWidth' :height='echartsheight' :Echarts_date="Echarts_date" :Echarts_low="Echarts_low" :Echarts_high="Echarts_high"></Echarts>
+        </div>
+        <!-- <Canvas v-if='dev' :width='canvas_width' :height='canvas_height' :speed='canvas_speed'></Canvas> -->
         <!-- <button @click='addSize'>增大大小</button>
         <button @click='subSize'>增大大小</button> -->
+      </div>
     </div>
 </template>
 
@@ -51,11 +57,13 @@ export default {
       weatherList: [],
       options: option,
       echartsWidth: '600px',
+      echartsheight: '400px',
       Echarts_date: [],
       Echarts_low: [],
       Echarts_high: [],
       canvas_width: '50px',
-      canvas_height: '50px'
+      canvas_height: '50px',
+      canvas_speed: 10
     }
   },
   methods: {
@@ -119,22 +127,51 @@ button{
   background-color: bisque;
 }
 .container{
-    width: 100vw;
+    width: 1200px;
+    left: 50%;
+    transform: translateX(-600px);
     height: 100vh;
     background-color: var(--background-color);
     position: absolute;
     margin-top: 0;
     font-family: 'Montserrat', sans-serif, Arial, 'Microsoft Yahei';
 }
+.header{
+    position:sticky;
+    position:-wekbit-sticky;
+    top:10px;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom:40px;
+}
+.flex-left{
+  margin-left: 50px;
+  margin-right: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.title{
+  margin-right: 20px;
+}
+.flex-left h3{
+  margin-left: 20px;
+}
+.flex-right{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 50px;
+}
 .subcontainer{
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 50px;
 }
-.subcontainer2{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
+
 </style>

@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 16:38:42
  * @LastEditors: 41
- * @LastEditTime: 2021-11-16 09:29:11
+ * @LastEditTime: 2021-11-16 11:57:29
  * @Description:
 -->
 <template>
@@ -49,26 +49,28 @@ export default {
 
 <style scoped>
 .search-box {
+    margin: 10px 20px;
     width: 60px;
-    height: 60px;
+    height: 40px;
     background-color: #999;
-    border-radius: 60px;
+    border-radius: 50px;
     /* 垂直居中，左右居左 */
     display: flex;
     justify-content: flex-end;
     align-items: center;
     transition: 0.5s;
+    box-sizing: border-box;
 }
 .key {
     /* flex布局中本区域的缩放比例为1份 */
     flex-shrink: 1;
     flex-grow: 1;
+    margin-left: 20px;
     /* background-color: violet; */
 }
 .key input {
     width: calc(100% - 40px);
     height: 40px;
-    padding: 0 20px;
     font-size: 18px;
     color: #fff;
     /* 边框背景为空 */
@@ -89,6 +91,7 @@ export default {
 
 .bt {
     /* flex布局中本区域的缩放比例为0份，不缩放，保持原有大小 */
+    margin-left:-50px;
     flex-shrink: 0;
     flex-grow: 0;
     width: 60px;
@@ -101,7 +104,7 @@ export default {
 }
 
 .bt a {
-    padding: 10px;
+    padding: 7px 10px;
     border-radius: 100%;
     text-decoration: none;
     color: #fff;

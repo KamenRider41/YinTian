@@ -2,12 +2,12 @@
  * @Author: 41
  * @Date: 2021-11-13 20:10:54
  * @LastEditors: 41
- * @LastEditTime: 2021-11-15 09:29:12
+ * @LastEditTime: 2021-11-16 11:08:43
  * @Description:
 -->
 <template>
     <div class='contain'>
-        <h3> 阿里巴巴五盗 </h3>
+        <h3> ______________ </h3>
     </div>
 </template>
 
@@ -24,7 +24,7 @@ export default {
 }
 </script>
 
-<style>
+<style scope>
 .contain{
     /* width: 100vw;
     height: 100vh; */
@@ -34,12 +34,13 @@ export default {
     justify-content: center;
     align-items: center;
 }
-h3{
+.contain h3{
     position: relative;
     font-size: 20px;
     color:#544e58
 }
-h3:before{
+.contain h3:before{
+    font-style:italic;
     position: absolute;
     /* 这里必须是Unicode编码 */
     content: '\963f\91cc\5df4\5df4\4e94\76d7';
