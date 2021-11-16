@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
  * @LastEditors: 41
- * @LastEditTime: 2021-11-16 13:56:48
+ * @LastEditTime: 2021-11-16 16:46:47
  * @Description:
 -->
 <template>
@@ -15,8 +15,11 @@
            <h3>{{this.city}}</h3>
            <h3>{{this.weather}}</h3>
         </div>
-        <!-- 搜索框 -->
+
         <div class="flex-right">
+          <!-- switch切换框 -->
+          <Switchs class='myswitch' @toggleChange="changeView($event)"></Switchs>
+          <!-- 搜索框 -->
           <Sousuo v-if="dev" v-model="city" @getSearch="getSearch($event)">{{city}}</Sousuo>
         </div>
       </div>
@@ -25,13 +28,15 @@
         <Tqyb v-if="dev" class="echarts_tyqb" :weatherList="weatherList" @changeWeather="updateWeather($event)"></Tqyb>
         <div class="subcontainer">
           <!-- 低温高温的echarts表格！让人切身感受温差！ -->
-          <Echarts v-if="dev" :options="options" :width='echartsWidth' :height='echartsheight' :Echarts_date="Echarts_date" :Echarts_low="Echarts_low" :Echarts_high="Echarts_high"></Echarts>
+          <Echarts v-if="dev&this.switchFlag" :options="options" :width='echartsWidth' :height='echartsheight' :Echarts_date="Echarts_date" :Echarts_low="Echarts_low" :Echarts_high="Echarts_high"></Echarts>
         </div>
         <!-- <Canvas v-if='dev' :width='canvas_width' :height='canvas_height' :speed='canvas_speed'></Canvas> -->
         <!-- <button @click='addSize'>增大大小</button>
         <button @click='subSize'>增大大小</button> -->
       </div>
+
     </div>
+
   </div>
 
 </template>
@@ -41,6 +46,7 @@ import Title from '@/components/title.vue'
 import Tqyb from '@/components/tyqb.vue'
 import Echarts from '@/components/echarts.vue'
 import Sousuo from '@/components/sousuo.vue'
+import Switchs from '@/components/switch.vue'
 import Canvas from '@/components/canvasStudy.vue'
 import {option} from '@/assets/options/options'
 export default {
@@ -49,6 +55,7 @@ export default {
     Tqyb,
     Echarts,
     Sousuo,
+    Switchs,
     Canvas
   },
   data () {
@@ -64,6 +71,7 @@ export default {
       Echarts_date: [],
       Echarts_low: [],
       Echarts_high: [],
+      switchFlag: true,
       canvas_width: '50px',
       canvas_height: '50px',
       canvas_speed: 10
@@ -100,6 +108,10 @@ export default {
         this.city = city
         this.searchWeather()
       }
+    },
+    changeView (flag) {
+      this.switchFlag = flag
+      console.log(this.switchFlag)
     },
     addSize () {
       this.canvas_width = parseInt(this.canvas_width) + 10 + 'px'
@@ -178,9 +190,12 @@ button{
 }
 .flex-right{
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   margin-right: 50px;
+}
+.myswitch{
+  margin-right: 30px;
 }
 .subcontainer{
   display: flex;

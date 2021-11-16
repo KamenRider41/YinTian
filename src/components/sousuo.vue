@@ -56,7 +56,6 @@ export default {
           timeout: 5000,
           maximumAge: 0,
         };
-
         window.navigator.geolocation.getCurrentPosition(
           (position) => {
             let longitude = position.coords.longitude;
