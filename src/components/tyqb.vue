@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 09:30:46
  * @LastEditors: 41
- * @LastEditTime: 2021-11-16 13:53:03
+ * @LastEditTime: 2021-11-16 14:17:05
  * @Description:
 -->
 <template>
@@ -169,6 +169,24 @@ export default {
     transform: scale(1.1);
     background-color: #ffffff;
     color: #222831;
+}
+.yu li:hover{
+  background:rgba(196, 58, 134, 0.4);
+}
+.qing li:hover{
+  background:rgba(223, 177, 25, 0.4);
+}
+.cloud li:hover{
+  background: rgba(136, 119, 212, 0.4);
+}
+.yin li:hover{
+  background:rgba(77, 74, 74, 0.4);
+}
+.xue li:hover{
+  background:rgba(16, 64, 194, 0.4);
+}
+.other li:hover{
+  background:rgba(0, 0, 0, 0.4);
 }
 .week-list .day-name {
     margin-top: 10px;
