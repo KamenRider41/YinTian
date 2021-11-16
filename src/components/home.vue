@@ -2,10 +2,11 @@
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
  * @LastEditors: 41
- * @LastEditTime: 2021-11-16 12:16:34
+ * @LastEditTime: 2021-11-16 13:56:48
  * @Description:
 -->
 <template>
+  <div class="background">
     <div class='container'>
       <div class="header">
         <!-- 简简单单的标题组件 -->
@@ -31,6 +32,8 @@
         <button @click='subSize'>增大大小</button> -->
       </div>
     </div>
+  </div>
+
 </template>
 
 <script>
@@ -116,6 +119,10 @@ export default {
   },
   mounted () {
     // this.check_data()
+    // const oScript = document.createElement('script')
+    // oScript.type = 'text/javascript'
+    // oScript.src = '../assets/js/Sakura.js'
+    // document.body.appendChild(oScript)
   }
 }
 </script>
@@ -126,7 +133,15 @@ button{
   height: 50px;
   background-color: bisque;
 }
+.background{
+  width: 100vw;
+  height: 100vh;
+  background-image: url('https://api.ixiaowai.cn/gqapi/gqapi.php');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
 .container{
+    opacity: 0.9;
     width: 1200px;
     left: 50%;
     transform: translateX(-600px);

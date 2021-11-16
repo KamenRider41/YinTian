@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 09:30:46
  * @LastEditors: 41
- * @LastEditTime: 2021-11-16 12:19:36
+ * @LastEditTime: 2021-11-16 13:53:03
  * @Description:
 -->
 <template>
@@ -111,7 +111,7 @@ export default {
 .week-container{
     /* background-color: rgb(158, 157, 155); */
     background:rgba(85, 83, 83, 0.1);
-    color:#ffffff;
+    color:#9e9a9a;
 }
 .week-list {
     margin: 10px 35px;

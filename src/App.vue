@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-13 21:07:25
  * @LastEditors: 41
- * @LastEditTime: 2021-11-16 10:49:27
+ * @LastEditTime: 2021-11-16 13:47:55
  * @Description:
 -->
 <template>
@@ -19,6 +19,7 @@ export default {
 
 <style>
 #app {
+
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
