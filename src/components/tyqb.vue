@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 09:30:46
  * @LastEditors: 41
- * @LastEditTime: 2021-11-16 20:52:48
+ * @LastEditTime: 2021-11-16 21:36:30
  * @Description:
 -->
 <template>
@@ -36,7 +36,7 @@ export default {
   },
   data () {
     return {
-      city: '长沙',
+      city: '',
       iconObj: {
         霾: 'iconfont icon-321tianqi_mai',
         强沙尘暴: 'iconfont icon-319tianqi_qiangshachenbao',

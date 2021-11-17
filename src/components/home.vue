@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
  * @LastEditors: 41
- * @LastEditTime: 2021-11-16 20:54:12
+ * @LastEditTime: 2021-11-17 08:44:22
  * @Description:
 -->
 <template>
@@ -21,15 +21,15 @@
           <!-- switch切换框 -->
           <Switchs class='myswitch' @toggleChange="changeView($event)"></Switchs>
           <!-- 搜索框 -->
-          <Sousuo v-if="dev" v-model="city" @getSearch="getSearch($event)">{{city}}</Sousuo>
+          <Sousuo v-if="dev&this.viewFlag!==3" v-model="city" @getSearch="getSearch($event)">{{city}}</Sousuo>
         </div>
       </div>
       <div class="subject">
         <!-- 将天气信息传给组件显示！ -->
-        <Tqyb v-if="dev" class="echarts_tyqb" :weatherList="weatherList" @changeDate="updateDate($event)" @changeWeather="updateWeather($event)"></Tqyb>
+        <Tqyb v-if="dev&this.viewFlag!==3" class="echarts_tyqb" :weatherList="weatherList" @changeDate="updateDate($event)" @changeWeather="updateWeather($event)"></Tqyb>
         <div class="subcontainer">
           <!-- 低温高温的echarts表格！让人切身感受温差！ -->
-          <Echarts v-if="dev&this.switchFlag" :options="options" :width='echartsWidth' :height='echartsheight' :Echarts_date="Echarts_date" :Echarts_low="Echarts_low" :Echarts_high="Echarts_high"></Echarts>
+          <Echarts v-if="dev&this.viewFlag!==2&this.viewFlag!==3" :options="options" :width='echartsWidth' :height='echartsheight' :Echarts_date="Echarts_date" :Echarts_low="Echarts_low" :Echarts_high="Echarts_high"></Echarts>
         </div>
         <!-- <Canvas v-if='dev' :width='canvas_width' :height='canvas_height' :speed='canvas_speed'></Canvas> -->
         <!-- <button @click='addSize'>增大大小</button>
@@ -73,7 +73,7 @@ export default {
       Echarts_date: [],
       Echarts_low: [],
       Echarts_high: [],
-      switchFlag: true,
+      viewFlag: 1,
       canvas_width: '50px',
       canvas_height: '50px',
       canvas_speed: 10
@@ -115,8 +115,8 @@ export default {
       }
     },
     changeView (flag) {
-      this.switchFlag = flag
-      console.log(this.switchFlag)
+      this.viewFlag = flag
+      console.log(this.viewFlag)
     },
     addSize () {
       this.canvas_width = parseInt(this.canvas_width) + 10 + 'px'
