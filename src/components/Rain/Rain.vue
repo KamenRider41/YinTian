@@ -9,49 +9,42 @@
 
 <script>
 /* eslint-disable */
-const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-const analyser = audioCtx.createAnalyser();
+import { createSource } from "@/utils/utils.js";
 
 export default {
+  name: "rain",
   props: {
     scale: {
       default: 1,
       type: Number,
     },
-    togglePlay: {
-      type: Function,
-    },
-    handleEnded: {
-      type: Function,
+    analyser: {
+      type: null,
     },
   },
   data() {
     return {
       speed: Number,
-      audioElement: null,
       canvasElement: null,
       dataArray: Array,
     };
   },
 
   mounted() {
-    // this.audioElement = document.getElementById("audio");
-    this.audioElement = this.$refs.a
+    // 不能立即执行，需要获取到父组件传来的audio才能，在watch中进行首次监听
     this.canvasElement = document.getElementById("canvas");
-    this.initAudio();
     this.initCanvas();
+    if (this.analyser !== null) {
+      this.initAudio();
+    }
   },
 
   methods: {
     //  初始化
     initAudio() {
-      let source = audioCtx.createMediaElementSource(this.audioElement);
-      source.connect(analyser);
-      analyser.connect(audioCtx.destination);
-
       // 创建频率数组
-      analyser.fftSize = 256;
-      let bufferLength = analyser.frequencyBinCount; //128
+      this.analyser.fftSize = 256;
+      let bufferLength = this.analyser.frequencyBinCount; //128
       this.dataArray = new Uint8Array(bufferLength);
 
       // 测试生成数据
@@ -65,12 +58,10 @@ export default {
     initCanvas() {
       let { canvasElement: canvas } = this;
       if (canvas.getContext) {
-        // draw here
-
+        // 自适应屏幕大小
         // 可认为 window.innerWidth = document.documentElement.clientWidth
         // canvas.height = window.innerHeight - canvas.offsetTop;
         // canvas.width = window.innerWidth;
-        // 自适应屏幕大小
         let container = document.querySelector(".container");
         canvas.height = container.clientHeight - canvas.offsetTop;
         canvas.width = container.clientWidth;
@@ -91,7 +82,7 @@ export default {
       let { canvasElement: canvas } = this;
       // 偏角 / 加速度
       let angle = 0;
-      let gravity = this.scale * 0.5;
+      let gravity = this.scale * 0.25;
 
       const lineList = [],
         lineNum = 2 + 2 * that.scale;
@@ -116,7 +107,7 @@ export default {
         // 增加纵向的抗性/灵敏度
         let offsetY =
           (window.innerHeight + 500 - e.clientY) / (window.innerHeight + 500);
-
+        // 获取偏角
         angle = Math.atan2(offsetY, offsetX);
       };
       window.requestAnimationFrame(draw);
@@ -155,25 +146,11 @@ export default {
         window.requestAnimationFrame(draw);
       }
     },
-
-    // 转换播放状态
-    // togglePlay() {
-    //   // 恢复在音频上下文暂停的音频
-    //   if (audioCtx.state === "suspended") {
-    //     audioCtx.resume();
-    //   }
-    //   if (this.isplay) {
-    //     this.audioElement.pause();
-    //   } else {
-    //     this.audioElement.play();
-    //   }
-    //   this.isplay = !this.isplay;
-    // },
-
-    // 处理播放结束
-    // handleEnded() {
-    //   this.isplay = false;
-    // },
+  },
+  watch: {
+    analyser() {
+      this.initAudio();
+    },
   },
 };
 </script>

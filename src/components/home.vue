@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-11-17 17:38:42
+ * @LastEditTime: 2021-11-17 20:13:18
  * @Description:
 -->
 <template>
@@ -20,7 +20,12 @@
           <h3>{{ this.weather }}</h3>
           <h3>{{ this.date }}</h3>
         </div>
-        <audiobox :src="music.src" :musicName="music.name" v-model="isPlay"></audiobox>
+        <audiobox
+          ref="audiobox"
+          :src="music.src"
+          :musicName="music.name"
+          v-model="music.isPlay"
+        ></audiobox>
         <div class="flex-right">
           <!-- switch切换框 -->
           <Switchs
@@ -62,7 +67,7 @@
       </div>
       <BreathLight v-if="this.viewFlag === 3" class="breath"></BreathLight>
     </div>
-    <rain :scale="1"></rain>
+    <rain :scale="1" :analyser="music.analyser"></rain>
   </div>
 </template>
 
@@ -103,8 +108,9 @@ export default {
       Echarts_high: [],
       viewFlag: 1,
       sousuoFlag: false,
-      isPlay: true,
       music: {
+        analyser: null,
+        isPlay: true,
         src: require("@/assets/My Spanish Guitar Gently Weeps.mp3"),
         name: "My Spanish Guitar Gently Weeps",
       },
@@ -186,7 +192,8 @@ export default {
     this.searchWeather(); // 初始化的时候调用一次接口
   },
   mounted() {
-    // this.check_data()
+    this.check_data();
+    this.analyser = this.$refs.audiobox.getAudioAnalyser();
   },
 };
 </script>
