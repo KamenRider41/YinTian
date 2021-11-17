@@ -116,7 +116,8 @@ export default {
 
     // 转换播放状态
     togglePlay () {
-      // 恢复在音频上下文暂停的音频
+      //
+      console.log('test')
       if (audioCtx.state === 'suspended') {
         audioCtx.resume()
       }
@@ -155,7 +156,7 @@ export default {
   }
   .controller{
     position: absolute;
-    z-index: 5;
+    z-index: 9999;
     bottom: 40px;
     left: 0;
     width: 100%;

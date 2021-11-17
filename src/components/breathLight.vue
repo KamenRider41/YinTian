@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-17 11:27:25
  * @LastEditors: 41
- * @LastEditTime: 2021-11-17 11:55:57
+ * @LastEditTime: 2021-11-17 12:21:05
  * @Description:
 -->
 <template>
@@ -59,7 +59,7 @@ span{
         border:5px solid rgba(255,0,0,1);
         box-shadow: 0 0 100px rgba(255, 0, 0, 1),
                     0 0 35px rgba(255,0,0,1) inset;
-        color:rgb(68, 67, 67);
+        color:rgb(78, 77, 77);
     }
 }
 @keyframes just2{
@@ -72,7 +72,7 @@ span{
         border:5px solid rgba(0,255,0,1);
         box-shadow: 0 0 100px rgba(0, 255, 0, 1),
                     0 0 35px rgba(0,255,0,1) inset;
-        color:rgb(60, 60, 60);
+        color:rgb(70, 70, 70);
     }
 }
 @keyframes just3{
@@ -85,7 +85,7 @@ span{
         border:5px solid rgba(0,0,255,1);
         box-shadow: 0 0 100px rgba(0, 0, 255, 1),
                     0 0 55px rgba(0,0,255,1) inset;
-        color:rgb(48, 47, 47);
+        color:rgb(55, 55, 55);
     }
 }
 </style>

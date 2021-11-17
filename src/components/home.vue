@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
  * @LastEditors: 41
- * @LastEditTime: 2021-11-17 12:03:02
+ * @LastEditTime: 2021-11-17 15:59:29
  * @Description:
 -->
 <template>
@@ -36,6 +36,7 @@
         </div>
       </div>
       <BreathLight v-if="this.viewFlag===3" class="breath"></BreathLight>
+      <Bulb class='myBulb' v-if="this.viewFlag===3"></Bulb>
     </div>
 
   </div>
@@ -49,6 +50,7 @@ import Echarts from '@/components/echarts.vue'
 import Sousuo from '@/components/sousuo.vue'
 import Switchs from '@/components/switch.vue'
 import BreathLight from '@/components/breathLight.vue'
+import Bulb from '@/components/bulb.vue'
 import {option} from '@/assets/options/options'
 export default {
   components: {
@@ -57,7 +59,8 @@ export default {
     Echarts,
     Sousuo,
     Switchs,
-    BreathLight
+    BreathLight,
+    Bulb
   },
   data () {
     return {
@@ -216,6 +219,13 @@ export default {
 }
 .breath{
   margin-left: 55px;
+  margin-top:20px;
+}
+.myBulb{
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%,0);
 }
 .black{
   background-color: rgb(48, 47, 47);
