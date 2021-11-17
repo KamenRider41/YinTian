@@ -14,15 +14,15 @@
     </div>
     <div>
       <div class="bubble"></div>
-      <div class="bubble">阴</div>
       <div class="bubble"></div>
-      <div class="bubble">天</div>
       <div class="bubble"></div>
-      <div class="bubble">也</div>
-      <div class="bubble">要</div>
-      <div class="bubble">快</div>
       <div class="bubble"></div>
-      <div class="bubble">乐</div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
     </div>
   </div>
 </template>
@@ -56,14 +56,9 @@ export default {
       analyser.connect(audioCtx.destination)
 
       // 创建频率数组
-      analyser.fftSize = 256
+      analyser.fftSize = 128
       this.bufferLength = analyser.frequencyBinCount
       this.dataArray = new Uint8Array(this.bufferLength)
-
-      // setInterval(() => {
-      //   analyser.getByteFrequencyData(this.dataArray)
-      //   console.log(this.dataArray)
-      // }, 1000)
     },
 
     // 绘图
@@ -105,6 +100,7 @@ export default {
 
         this.ctx.fillStyle = 'rgb(' + r + ',' + g + ',' + b + ')'
         this.ctx.fillRect(x, this.HEIGHT - barHeight, this.barWidth, barHeight)
+        // this.ctx.fillRect(-x, this.HEIGHT - barHeight, this.barWidth, barHeight)
 
         x += this.barWidth + 2
       }
@@ -112,7 +108,8 @@ export default {
 
     // 转换播放状态
     togglePlay () {
-      // 恢复在音频上下文暂停的音频
+      //
+      console.log('test')
       if (audioCtx.state === 'suspended') {
         audioCtx.resume()
       }
@@ -121,7 +118,7 @@ export default {
       } else {
         this.audioElement.play()
         this.draw()
-        console.log(111)
+        console.log(this.dataArray)
       }
       this.isplay = !this.isplay
     },
@@ -139,22 +136,23 @@ export default {
     box-sizing: border-box;
   }
   .cloud {
-    position: fixed;
+    /* position: fixed; */
+    /* position: relative; */
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
     z-index: -10;
-    background-image: linear-gradient(to top, #9890e3 0%, #b1f4cf 100%);
+    background-image: linear-gradient(to top, #6a85b6 0%, #bac8e0 100%);
 
   }
   .controller{
     position: absolute;
-    z-index: 5;
+    z-index: 9999;
     bottom: 40px;
     left: 50%;
     width: 120px;
-    height: 60px;
+    height: 40px;
     text-align: center;
   }
   #music-btn{
