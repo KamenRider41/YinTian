@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
  * @LastEditors: 41
- * @LastEditTime: 2021-11-17 10:35:03
+ * @LastEditTime: 2021-11-17 12:03:02
  * @Description:
 -->
 <template>
@@ -34,9 +34,8 @@
           <!-- 低温高温的echarts表格！让人切身感受温差！ -->
           <Echarts v-if="dev&this.viewFlag!==2&this.viewFlag!==3" :options="options" :width='echartsWidth' :height='echartsheight' :Echarts_date="Echarts_date" :Echarts_low="Echarts_low" :Echarts_high="Echarts_high"></Echarts>
         </div>
-        <!-- <Canvas v-if='dev' :width='canvas_width' :height='canvas_height' :speed='canvas_speed'></Canvas> -->
       </div>
-
+      <BreathLight v-if="this.viewFlag===3" class="breath"></BreathLight>
     </div>
 
   </div>
@@ -49,7 +48,7 @@ import Tqyb from '@/components/tyqb.vue'
 import Echarts from '@/components/echarts.vue'
 import Sousuo from '@/components/sousuo.vue'
 import Switchs from '@/components/switch.vue'
-import Canvas from '@/components/canvasStudy.vue'
+import BreathLight from '@/components/breathLight.vue'
 import {option} from '@/assets/options/options'
 export default {
   components: {
@@ -58,7 +57,7 @@ export default {
     Echarts,
     Sousuo,
     Switchs,
-    Canvas
+    BreathLight
   },
   data () {
     return {
@@ -122,6 +121,12 @@ export default {
     changeView (flag) {
       this.viewFlag = flag
       console.log(this.viewFlag)
+      let contain = document.querySelector('.container')
+      if (this.viewFlag === 3) {
+        contain.classList.add('black')
+      } else {
+        contain.classList.remove('black')
+      }
     },
     changeSousuoFlag () {
       console.log('触发背景点击之前' + this.sousuoFlag)
@@ -152,7 +157,7 @@ export default {
   width: 100%;
   height: 100%;
   background-image: url('https://api.ixiaowai.cn/gqapi/gqapi.php');
-  /* background-repeat: no-repeat; */
+  background-repeat: no-repeat;
   background-size: 100% 100%;
 }
 .container{
@@ -208,6 +213,12 @@ export default {
   justify-content: center;
   align-items: center;
   margin-top: 50px;
+}
+.breath{
+  margin-left: 55px;
+}
+.black{
+  background-color: rgb(48, 47, 47);
 }
 
 </style>
