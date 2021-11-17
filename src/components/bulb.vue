@@ -2,13 +2,13 @@
  * @Author: 41
  * @Date: 2021-11-17 15:25:38
  * @LastEditors: 41
- * @LastEditTime: 2021-11-17 16:05:34
+ * @LastEditTime: 2021-11-17 18:08:58
  * @Description:
 -->
 <template>
     <div class="light">
         <div class="wire"></div>
-        <div class="bulb">
+        <div class="bulb" @mybuttonFlag='changBulb($event)'>
             <span></span>
             <span></span>
         </div>
@@ -16,14 +16,42 @@
 </template>
 
 <script>
+import Button from '@/components/button.vue'
 export default {
+  props: {
+    flag: {
+      type: Boolean,
+      default: false
+    }
+  },
+  watch: {
+    flag () {
+      console.log('bulb get button message')
+      let bulb = document.querySelector('.bulb')
+      if (this.flag === true) {
+        bulb.classList.add('on')
+      } else {
+        bulb.classList.remove('on')
+      }
+    }
+  },
   data () {
     return {
 
     }
   },
+  components: {
+    Button
+  },
   methods: {
-
+    upBulb () {
+      let bulb = document.querySelector('.bulb')
+      bulb.classList.add('on')
+    },
+    downBulb () {
+      let bulb = document.querySelector('.bulb')
+      bulb.classList.add('remove')
+    }
   }
 }
 </script>
