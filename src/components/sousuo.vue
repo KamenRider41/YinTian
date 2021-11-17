@@ -1,8 +1,8 @@
 <!--
  * @Author: 41
  * @Date: 2021-11-15 16:38:42
- * @LastEditors: 41
- * @LastEditTime: 2021-11-17 09:47:08
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-11-17 14:11:39
  * @Description:
 -->
 <template>
@@ -74,7 +74,7 @@ export default {
       if (window.navigator.geolocation) {
         let options = {
           enableHighAccuracy: true,
-          timeout: 2000,
+          timeout: 1000,
           maximumAge: 0,
         };
         window.navigator.geolocation.getCurrentPosition(
@@ -88,6 +88,7 @@ export default {
       
       // 成功回调
       function success(position) {
+        console.log(position);
         let longitude = position.coords.longitude;
         let latitude = position.coords.latitude;
         console.log("经纬度:", longitude, latitude);

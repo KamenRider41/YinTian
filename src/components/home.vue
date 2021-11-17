@@ -1,8 +1,8 @@
 <!--
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
- * @LastEditors: 41
- * @LastEditTime: 2021-11-17 12:03:02
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-11-17 15:26:14
  * @Description:
 -->
 <template>
@@ -37,7 +37,7 @@
       </div>
       <BreathLight v-if="this.viewFlag===3" class="breath"></BreathLight>
     </div>
-
+    <rain :scale="1"></rain>
   </div>
 
 </template>
@@ -49,7 +49,9 @@ import Echarts from '@/components/echarts.vue'
 import Sousuo from '@/components/sousuo.vue'
 import Switchs from '@/components/switch.vue'
 import BreathLight from '@/components/breathLight.vue'
+import Rain from '@/components/Rain/Rain.vue'
 import {option} from '@/assets/options/options'
+
 export default {
   components: {
     Title,
@@ -57,7 +59,8 @@ export default {
     Echarts,
     Sousuo,
     Switchs,
-    BreathLight
+    BreathLight,
+    Rain
   },
   data () {
     return {
@@ -161,13 +164,14 @@ export default {
   background-size: 100% 100%;
 }
 .container{
+    z-index: 99;
     position: absolute;
     height: 1000px;
     opacity: 0.9;
     width: 1200px;
     left: 50%;
     transform: translateX(-600px);
-    background-color: var(--background-color);
+    background-color: rgba(255, 255, 255, 0.2);
     margin-top: 0;
     font-family: 'Montserrat', sans-serif, Arial, 'Microsoft Yahei';
 }
