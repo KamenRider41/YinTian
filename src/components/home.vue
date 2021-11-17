@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
  * @LastEditors: 41
- * @LastEditTime: 2021-11-17 09:31:45
+ * @LastEditTime: 2021-11-17 09:41:26
  * @Description:
 -->
 <template>
@@ -74,16 +74,14 @@ export default {
       Echarts_low: [],
       Echarts_high: [],
       viewFlag: 1,
-      sousuoFlag: false,
-      canvas_width: '50px',
-      canvas_height: '50px',
-      canvas_speed: 10
+      sousuoFlag: false
     }
   },
   methods: {
     async searchWeather () {
       // 调用接口
       var that = this
+
       this.$axios.get('/weather_mini?city=' + this.city)
         .then(function (response) {
           console.log(response.data.data.forecast)
@@ -99,6 +97,10 @@ export default {
             that.Echarts_high.push(parseInt(item.high.substring(2)) - parseInt(item.low.substring(2)))
             // console.log(parseInt(item.high.substring(2)))
           })
+        }).catch(function (err) {
+          console.log('接口查询错误:' + err)
+          console.log(that.tempcity, that.city)
+          that.city = that.tempcity
         })
     },
     updateWeather (weather) {
@@ -112,6 +114,7 @@ export default {
       if (city) {
         this.tempcity = this.city
         this.city = city
+        console.log(this.city, this.city)
         this.searchWeather()
       }
     },
@@ -129,14 +132,6 @@ export default {
       this.sousuoFlag = flag
       if (temp !== flag) { console.log('回调变为' + this.sousuoFlag) } // 防抖！
     },
-    addSize () {
-      this.canvas_width = parseInt(this.canvas_width) + 10 + 'px'
-      this.canvas_height = parseInt(this.canvas_height) + 10 + 'px'
-    },
-    subSize () {
-      this.canvas_width = parseInt(this.canvas_width) - 10 + 'px'
-      this.canvas_height = parseInt(this.canvas_height) - 10 + 'px'
-    },
     check_data () {
       console.log(this.weatherList)
       console.log(this.Echarts_date)
@@ -147,10 +142,6 @@ export default {
   },
   mounted () {
     // this.check_data()
-    // const oScript = document.createElement('script')
-    // oScript.type = 'text/javascript'
-    // oScript.src = '../assets/js/Sakura.js'
-    // document.body.appendChild(oScript)
   }
 }
 </script>
