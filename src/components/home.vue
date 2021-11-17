@@ -2,12 +2,17 @@
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
  * @LastEditors: 41
- * @LastEditTime: 2021-11-17 09:41:26
+ * @LastEditTime: 2021-11-17 10:22:50
  * @Description:
 -->
 <template>
   <div class="background" @click="changeSousuoFlag" >
+      <div class="fly bg-fly-circle1"></div>
+      <div class="fly bg-fly-circle2"></div>
+      <div class="fly bg-fly-circle3"></div>
+      <div class="fly bg-fly-circle4"></div>
     <div class='container'>
+
       <div class="header">
         <!-- 简简单单的标题组件 -->
         <div class="flex-left">
@@ -16,7 +21,6 @@
            <h3>{{this.weather}}</h3>
            <h3>{{this.date}}</h3>
         </div>
-
         <div class="flex-right">
           <!-- switch切换框 -->
           <Switchs class='myswitch' @toggleChange="changeView($event)"></Switchs>
@@ -32,8 +36,6 @@
           <Echarts v-if="dev&this.viewFlag!==2&this.viewFlag!==3" :options="options" :width='echartsWidth' :height='echartsheight' :Echarts_date="Echarts_date" :Echarts_low="Echarts_low" :Echarts_high="Echarts_high"></Echarts>
         </div>
         <!-- <Canvas v-if='dev' :width='canvas_width' :height='canvas_height' :speed='canvas_speed'></Canvas> -->
-        <!-- <button @click='addSize'>增大大小</button>
-        <button @click='subSize'>增大大小</button> -->
       </div>
 
     </div>
@@ -153,20 +155,23 @@ button{
   background-color: bisque;
 }
 .background{
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background-image: url('https://api.ixiaowai.cn/gqapi/gqapi.php');
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat; */
   background-size: 100% 100%;
+  overflow: hidden;
+  position: relative;
 }
 .container{
+    position: absolute;
+    height: 1000px;
     opacity: 0.9;
     width: 1200px;
     left: 50%;
     transform: translateX(-600px);
-    height: 100vh;
     background-color: var(--background-color);
-    position: absolute;
+
     margin-top: 0;
     font-family: 'Montserrat', sans-serif, Arial, 'Microsoft Yahei';
 }
