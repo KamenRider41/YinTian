@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-11-17 20:13:18
+ * @LastEditTime: 2021-11-17 20:42:34
  * @Description:
 -->
 <template>
@@ -27,6 +27,12 @@
           v-model="music.isPlay"
         ></audiobox>
         <div class="flex-right">
+          <!-- 有声音的按钮 -->
+          <Button
+            class="mybutton"
+            v-if="this.viewFlag === 3"
+            @mybuttonFlag="changeBulb($event)"
+          ></Button>
           <!-- switch切换框 -->
           <Switchs
             class="myswitch"
@@ -66,6 +72,7 @@
         </div>
       </div>
       <BreathLight v-if="this.viewFlag === 3" class="breath"></BreathLight>
+      <Bulb class="myBulb" v-if="this.viewFlag === 3" :flag="bulbFlag"></Bulb>
     </div>
     <rain :scale="1" :analyser="music.analyser"></rain>
   </div>
@@ -79,9 +86,11 @@ import Echarts from "@/components/echarts.vue";
 import Sousuo from "@/components/sousuo.vue";
 import Switchs from "@/components/switch.vue";
 import BreathLight from "@/components/breathLight.vue";
+import Bulb from "@/components/bulb.vue";
 import Rain from "@/components/Rain/Rain.vue";
-import { option } from "@/assets/options/options";
+import Button from "@/components/button.vue";
 
+import { option } from "@/assets/options/options";
 export default {
   components: {
     Title,
@@ -90,7 +99,9 @@ export default {
     Sousuo,
     Switchs,
     BreathLight,
+    Bulb,
     Rain,
+    Button,
   },
   data() {
     return {
@@ -107,6 +118,7 @@ export default {
       Echarts_low: [],
       Echarts_high: [],
       viewFlag: 1,
+      bulbFlag: false,
       sousuoFlag: false,
       music: {
         analyser: null,
@@ -187,6 +199,10 @@ export default {
       console.log(this.weatherList);
       console.log(this.Echarts_date);
     },
+    changeBulb(flag) {
+      console.log("Bulb get" + flag);
+      this.bulbFlag = flag;
+    },
   },
   created() {
     this.searchWeather(); // 初始化的时候调用一次接口
@@ -206,6 +222,7 @@ export default {
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
+
 .container {
   z-index: 99;
   position: absolute;
@@ -252,6 +269,9 @@ export default {
 .myswitch {
   margin-right: 30px;
 }
+.mybutton {
+  margin-right: 70px;
+}
 .echarts_tyqb {
   transition: 0.5s;
 }
@@ -264,7 +284,13 @@ export default {
 .breath {
   margin-left: 55px;
 }
+.myBulb {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
 .black {
-  background-color: rgb(48, 47, 47);
+  background-color: var(--background-color);
 }
 </style>
