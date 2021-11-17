@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
  * @LastEditors: 41
- * @LastEditTime: 2021-11-17 09:13:07
+ * @LastEditTime: 2021-11-17 09:31:45
  * @Description:
 -->
 <template>
@@ -125,8 +125,9 @@ export default {
       console.log('触发背景点击之后' + this.sousuoFlag)
     },
     backSousuo (flag) {
+      let temp = this.sousuoFlag
       this.sousuoFlag = flag
-      console.log('回调变为' + this.sousuoFlag)
+      if (temp !== flag) { console.log('回调变为' + this.sousuoFlag) } // 防抖！
     },
     addSize () {
       this.canvas_width = parseInt(this.canvas_width) + 10 + 'px'
