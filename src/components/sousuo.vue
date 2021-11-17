@@ -2,13 +2,13 @@
  * @Author: 41
  * @Date: 2021-11-15 16:38:42
  * @LastEditors: 41
- * @LastEditTime: 2021-11-17 09:16:13
+ * @LastEditTime: 2021-11-17 09:47:08
  * @Description:
 -->
 <template>
   <!-- 搜索框最外边框，动画变化的边框，从圆形变成长条形圆角 -->
   <!-- @mouseout="deactiveBox" -->
-  <div class="search-box" @mouseover="activeBox" >
+  <div class="search-box" @mouseover="activeBox" @click.stop="stop" >
     <!-- 左侧搜索框 -->
     <div class="key">
       <input
@@ -64,6 +64,9 @@ export default {
     searchCity() {
       this.$emit("getSearch", this.city);
       console.log(this.city);
+    },
+    stop(){
+      console.log('阻止事情冒泡！');
     },
     locationCity() {
       let that = this;
