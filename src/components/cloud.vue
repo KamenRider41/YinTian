@@ -46,7 +46,6 @@ export default {
     this.audioElement = document.getElementById('audio')
     this.canvasElement = document.getElementById('canvas')
     this.init()
-    // this.draw()
   },
 
   methods: {
@@ -57,20 +56,14 @@ export default {
       analyser.connect(audioCtx.destination)
 
       // 创建频率数组
-      analyser.fftSize = 256
+      analyser.fftSize = 128
       this.bufferLength = analyser.frequencyBinCount
       this.dataArray = new Uint8Array(this.bufferLength)
-
-      // setInterval(() => {
-      //   analyser.getByteFrequencyData(this.dataArray)
-      //   console.log(this.dataArray)
-      // }, 1000)
     },
 
     // 绘图
     draw () {
       let { canvasElement: canvas } = this
-      // let ctx
       console.log(canvas.clientWidth, canvas.clientHeight)
       if (canvas.getContext) {
         this.ctx = canvas.getContext('2d')
@@ -85,7 +78,6 @@ export default {
       this.HEIGHT = canvas.height
 
       this.barWidth = this.WIDTH / this.bufferLength
-      // console.log(this)
       this.renderFrame()
     },
     renderFrame () {
@@ -93,7 +85,6 @@ export default {
       requestAnimationFrame(this.renderFrame)
 
       analyser.getByteFrequencyData(this.dataArray)
-      // console.log(this)
 
       this.ctx.clearRect(0, 0, this.WIDTH, this.HEIGHT)
 
@@ -109,6 +100,7 @@ export default {
 
         this.ctx.fillStyle = 'rgb(' + r + ',' + g + ',' + b + ')'
         this.ctx.fillRect(x, this.HEIGHT - barHeight, this.barWidth, barHeight)
+        // this.ctx.fillRect(-x, this.HEIGHT - barHeight, this.barWidth, barHeight)
 
         x += this.barWidth + 2
       }
@@ -125,9 +117,8 @@ export default {
         this.audioElement.pause()
       } else {
         this.audioElement.play()
-        // console.log(this.$ref.container)
         this.draw()
-        // console.log(this.dataArray)
+        console.log(this.dataArray)
       }
       this.isplay = !this.isplay
     },
@@ -141,40 +132,41 @@ export default {
 </script>
 
 <style scoped>
-  #canvas {
-    border: 1px solid black;
-    width: 1200px;
-    height: 100vh;
-    /* width: 100%; */
-    /* height: 100vh; */
-  /* z-index: 9; */
-  }
   * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
+  }
+  .cloud {
+    /* position: fixed; */
+    /* position: relative; */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -10;
+    background-image: linear-gradient(to top, #6a85b6 0%, #bac8e0 100%);
+
   }
   .controller{
     position: absolute;
     z-index: 9999;
     bottom: 40px;
-    left: 0;
-    width: 100%;
+    left: 50%;
+    width: 120px;
     height: 40px;
     text-align: center;
   }
-
-  .cloud {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -10;
-    background-image: linear-gradient(to top, #9890e3 0%, #b1f4cf 100%);
-
+  #music-btn{
+    width: 120px;
+    height: 40px;
+    cursor: pointer;
+    background-color: #9890e3;
+    border-radius: 10px;
   }
-
+  #canvas {
+    border: 1px solid black;
+    width: 1200px;
+    height: 100vh;
+  }
   .bubble {
     position: absolute;
     border-radius: 50%;
@@ -213,8 +205,8 @@ export default {
 
   .bubble:nth-child(2) {
     left: 15%;
-    width: 20px;
-    height: 20px;
+    width: 50px;
+    height: 50px;
     animation-duration: 6s;
     animation-delay: 1.5s;
 
