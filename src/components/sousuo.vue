@@ -1,8 +1,8 @@
 <!--
  * @Author: 41
  * @Date: 2021-11-15 16:38:42
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-11-16 15:20:37
+ * @LastEditors: 41
+ * @LastEditTime: 2021-11-17 08:54:06
  * @Description:
 -->
 <template>
@@ -80,10 +80,10 @@ export default {
         geocoder.getLocation(point, (rs) => {
           let addComp = rs.addressComponents;
           console.log("您所在城市：" + addComp.city);
+          that.city=addComp.city
           that.$emit("getSearch", addComp.city);
         });
       }
-
       // 失败回调
       function error(err) {
         switch (err.code) {
@@ -94,7 +94,7 @@ export default {
             alert("暂时获取不到位置信息！");
             break;
           case 3:
-            alert("获取信息超时！");
+            alert("获取位置信息超时！");
             break;
           case 4:
             alert("未知错误！");
@@ -102,7 +102,11 @@ export default {
         }
       }
     },
+    
   },
+  mounted(){
+    this.locationCity()
+  }
 };
 </script>
 
