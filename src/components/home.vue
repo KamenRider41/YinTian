@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-11-17 22:26:22
+ * @LastEditTime: 2021-11-17 22:27:40
  * @Description:
 -->
 <template>
@@ -74,11 +74,11 @@
       <BreathLight v-if="this.viewFlag === 3" class="breath"></BreathLight>
       <Bulb class="myBulb" v-if="this.viewFlag === 3" :flag="bulbFlag"></Bulb>
     </div>
-    <rain v-if="state == 1" :scale="1" :analyser="music.analyser"></rain>
-    <rain v-else-if="state == 2"></rain>
-    <rain v-else-if="state == 3"></rain>
-    <rain v-else-if="state == 4"></rain>
-    <rain v-else-if="state == 5"></rain>
+    <rain v-if="weaState == 1" :scale="1" :analyser="music.analyser"></rain>
+    <rain v-else-if="weaState == 2"></rain>
+    <rain v-else-if="weaState == 3"></rain>
+    <rain v-else-if="weaState == 4"></rain>
+    <rain v-else-if="weaState == 5"></rain>
   </div>
 </template>
 
@@ -130,7 +130,7 @@ export default {
         src: require("@/assets/My Spanish Guitar Gently Weeps.mp3"),
         name: "My Spanish Guitar Gently Weeps",
       },
-      state: 0,
+      weaState: 1,
     };
   },
   methods: {
