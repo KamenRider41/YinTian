@@ -2,13 +2,17 @@
  * @Author: 41
  * @Date: 2021-11-17 16:21:59
  * @LastEditors: 41
- * @LastEditTime: 2021-11-17 17:53:30
+ * @LastEditTime: 2021-11-17 21:11:41
  * @Description:
 -->
 <template>
-    <div class="switch">
+    <div>
+      <div class="switch">
         <div class="btn" @click.stop="changeFlag"></div>
+      </div>
+    <audio :src="require('../assets/click.wav')" id="audio" ></audio>
     </div>
+
 </template>
 
 <script>
@@ -22,6 +26,8 @@ export default {
     changeFlag () {
       console.log('click test')
       let btn = document.querySelector('.btn')
+      let audio = document.querySelector('#audio')
+      audio.play()
       if (!this.flag) {
         btn.classList.add('on')
         this.flag = true

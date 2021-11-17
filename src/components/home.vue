@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
  * @LastEditors: 41
- * @LastEditTime: 2021-11-17 18:19:10
+ * @LastEditTime: 2021-11-17 20:53:15
  * @Description:
 -->
 <template>
@@ -20,7 +20,6 @@
           <h3>{{ this.weather }}</h3>
           <h3>{{ this.date }}</h3>
         </div>
-        <audiobox :src="music.src" :musicName="music.name" v-model="isPlay"></audiobox>
         <div class="flex-right">
           <!-- 有声音的按钮 -->
           <Button class='mybutton' v-if="this.viewFlag===3" @mybuttonFlag="changeBulb($event)"></Button>
@@ -65,7 +64,6 @@
       <BreathLight v-if="this.viewFlag===3" class="breath"></BreathLight>
       <Bulb class='myBulb' v-if="this.viewFlag===3" :flag="bulbFlag"></Bulb>
     </div>
-    <rain :scale="1"></rain>
   </div>
 </template>
 
@@ -77,7 +75,6 @@ import Sousuo from '@/components/sousuo.vue'
 import Switchs from '@/components/switch.vue'
 import BreathLight from '@/components/breathLight.vue'
 import Bulb from '@/components/bulb.vue'
-import Rain from '@/components/Rain/Rain.vue'
 import Button from '@/components/button.vue'
 
 import {option} from '@/assets/options/options'
@@ -90,7 +87,6 @@ export default {
     Switchs,
     BreathLight,
     Bulb,
-    Rain,
     Button
   },
   data () {
