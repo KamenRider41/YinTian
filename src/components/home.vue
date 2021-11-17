@@ -2,11 +2,11 @@
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
  * @LastEditors: 41
- * @LastEditTime: 2021-11-17 08:44:22
+ * @LastEditTime: 2021-11-17 09:13:07
  * @Description:
 -->
 <template>
-  <div class="background">
+  <div class="background" @click="changeSousuoFlag" >
     <div class='container'>
       <div class="header">
         <!-- 简简单单的标题组件 -->
@@ -21,7 +21,7 @@
           <!-- switch切换框 -->
           <Switchs class='myswitch' @toggleChange="changeView($event)"></Switchs>
           <!-- 搜索框 -->
-          <Sousuo v-if="dev&this.viewFlag!==3" v-model="city" @getSearch="getSearch($event)">{{city}}</Sousuo>
+          <Sousuo v-if="dev&this.viewFlag!==3" v-model="city" @getSearch="getSearch($event)" :flag='sousuoFlag' @sousuoFlag="backSousuo($event)">{{city}}</Sousuo>
         </div>
       </div>
       <div class="subject">
@@ -74,6 +74,7 @@ export default {
       Echarts_low: [],
       Echarts_high: [],
       viewFlag: 1,
+      sousuoFlag: false,
       canvas_width: '50px',
       canvas_height: '50px',
       canvas_speed: 10
@@ -117,6 +118,15 @@ export default {
     changeView (flag) {
       this.viewFlag = flag
       console.log(this.viewFlag)
+    },
+    changeSousuoFlag () {
+      console.log('触发背景点击之前' + this.sousuoFlag)
+      this.sousuoFlag = true
+      console.log('触发背景点击之后' + this.sousuoFlag)
+    },
+    backSousuo (flag) {
+      this.sousuoFlag = flag
+      console.log('回调变为' + this.sousuoFlag)
     },
     addSize () {
       this.canvas_width = parseInt(this.canvas_width) + 10 + 'px'

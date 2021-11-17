@@ -2,12 +2,13 @@
  * @Author: 41
  * @Date: 2021-11-15 16:38:42
  * @LastEditors: 41
- * @LastEditTime: 2021-11-17 08:54:06
+ * @LastEditTime: 2021-11-17 09:16:13
  * @Description:
 -->
 <template>
   <!-- 搜索框最外边框，动画变化的边框，从圆形变成长条形圆角 -->
-  <div class="search-box" @mouseover="activeBox" @mouseout="deactiveBox">
+  <!-- @mouseout="deactiveBox" -->
+  <div class="search-box" @mouseover="activeBox" >
     <!-- 左侧搜索框 -->
     <div class="key">
       <input
@@ -31,6 +32,20 @@
 <script>
 /* eslint-disable */
 export default {
+  props:{
+    flag: {
+      type: Boolean,
+      default: false
+    }
+  },
+  watch:{
+    flag(){
+      console.log('check'+this.flag);
+      if(this.flag===true){
+        this.deactiveBox()
+      }
+    }
+  },
   data() {
     return {
       city: "长沙",
@@ -40,6 +55,7 @@ export default {
     activeBox() {
       let box = document.querySelector(".search-box");
       box.classList.add("active");
+      this.$emit("sousuoFlag", false);
     },
     deactiveBox() {
       let box = document.querySelector(".search-box");
