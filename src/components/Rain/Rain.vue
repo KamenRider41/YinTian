@@ -1,9 +1,5 @@
 <template>
   <div class="container">
-    <audio
-      id="audio"
-      :src="require('@/assets/My Spanish Guitar Gently Weeps.mp3')"
-    ></audio>
     <!-- <button id="music-btn" @click="togglePlay">
       <span>Play/Pause</span>
     </button> -->
@@ -39,11 +35,11 @@ export default {
   },
 
   mounted() {
-    this.audioElement = document.getElementById("audio");
+    // this.audioElement = document.getElementById("audio");
+    this.audioElement = this.$refs.a
     this.canvasElement = document.getElementById("canvas");
     this.initAudio();
     this.initCanvas();
-    this.$toast.info("Hello world");
   },
 
   methods: {
@@ -91,9 +87,11 @@ export default {
     },
 
     drawRain(ctx) {
-      let that = this,
-        angle;
+      let that = this;
       let { canvasElement: canvas } = this;
+      // 偏角 / 加速度
+      let angle = 0;
+      let gravity = this.scale * 0.5;
 
       const lineList = [],
         lineNum = 2 + 2 * that.scale;
@@ -105,7 +103,7 @@ export default {
           y: -100,
           width: 2 * Math.random(),
           len: 20 + 20 * Math.random(),
-          speed: 5 * Math.random() + 2 * that.scale,
+          speed: 0,
           color: "#aaa",
           die: false,
         });
@@ -114,7 +112,7 @@ export default {
       window.onmousemove = (e) => {
         // 减少横向的灵敏度
         let offsetX =
-          (2 * e.clientX - window.innerWidth) / (window.innerWidth * 1.5);
+          (2 * e.clientX - window.innerWidth) / (window.innerWidth * 2);
         // 增加纵向的抗性/灵敏度
         let offsetY =
           (window.innerHeight + 500 - e.clientY) / (window.innerHeight + 500);
@@ -127,7 +125,8 @@ export default {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         lineList.forEach((e) => {
-          e.x += e.speed * Math.cos(angle);
+          // 风向影响
+          e.x += (e.speed + 10 * Math.random()) * Math.cos(angle);
           e.y += e.speed * Math.sin(angle);
           let nextX = e.x + e.len * Math.cos(angle);
           let nextY = e.y + e.len * Math.sin(angle);
@@ -140,8 +139,8 @@ export default {
           ctx.strokeStyle = e.color;
           ctx.stroke();
 
-          e.x = nextX;
-          e.y = nextY;
+          // 重力影响增加速度
+          e.speed += gravity;
           if (e.y > canvas.height) e.die = true;
         });
         // 创建雨点
@@ -158,23 +157,23 @@ export default {
     },
 
     // 转换播放状态
-    togglePlay() {
-      // 恢复在音频上下文暂停的音频
-      if (audioCtx.state === "suspended") {
-        audioCtx.resume();
-      }
-      if (this.isplay) {
-        this.audioElement.pause();
-      } else {
-        this.audioElement.play();
-      }
-      this.isplay = !this.isplay;
-    },
+    // togglePlay() {
+    //   // 恢复在音频上下文暂停的音频
+    //   if (audioCtx.state === "suspended") {
+    //     audioCtx.resume();
+    //   }
+    //   if (this.isplay) {
+    //     this.audioElement.pause();
+    //   } else {
+    //     this.audioElement.play();
+    //   }
+    //   this.isplay = !this.isplay;
+    // },
 
     // 处理播放结束
-    handleEnded() {
-      this.isplay = false;
-    },
+    // handleEnded() {
+    //   this.isplay = false;
+    // },
   },
 };
 </script>
