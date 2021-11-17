@@ -9,7 +9,6 @@
 
 <script>
 /* eslint-disable */
-import { createSource } from "@/utils/utils.js";
 
 export default {
   name: "rain",
@@ -95,7 +94,7 @@ export default {
           width: 2 * Math.random(),
           len: 20 + 20 * Math.random(),
           speed: 0,
-          color: "#aaa",
+          color: "#fff",
           die: false,
         });
       }
