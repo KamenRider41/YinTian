@@ -2,13 +2,13 @@
  * @Author: 41
  * @Date: 2021-11-15 09:30:46
  * @LastEditors: 41
- * @LastEditTime: 2021-11-16 21:36:30
+ * @LastEditTime: 2021-11-17 10:38:19
  * @Description:
 -->
 <template>
     <div class="week-container">
         <ul class="week-list" >
-            <li id="day1" v-for="(item,index) in weatherList" :key="index" @click="get_weather(index)">
+            <li id="day1" v-for="(item,index) in weatherList" :key="index" @click.stop="get_weather(index)">
                 <span :class="iconObj[item.type]"></span>
                 <span class="day-name">{{item.type}}</span>
                 <span class="day-name">{{item.date}}</span>

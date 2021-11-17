@@ -2,11 +2,11 @@
  * @Author: 41
  * @Date: 2021-11-16 16:12:33
  * @LastEditors: 41
- * @LastEditTime: 2021-11-17 08:38:37
+ * @LastEditTime: 2021-11-17 10:38:43
  * @Description:
 -->
 <template>
-        <div id="toggle" @click='changeToggle'>
+        <div id="toggle" @click.stop='changeToggle'>
             <i class="indicator"></i>
         </div>
 </template>

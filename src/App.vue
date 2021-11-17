@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-13 21:07:25
  * @LastEditors: 41
- * @LastEditTime: 2021-11-17 10:27:44
+ * @LastEditTime: 2021-11-17 10:37:13
  * @Description:
 -->
 <template>
@@ -34,7 +34,7 @@ export default {
   z-index: 9999;
 }
 .bg-fly-circle1 {
-  left: 10%;
+  left: 13%;
   top: 100px;
   width: 100px;
   height: 100px;
@@ -44,7 +44,7 @@ export default {
   animation: move 2.5s linear infinite;
 }
 .bg-fly-circle2 {
-  left: 12%;
+  left: 15%;
   top: 60%;
   width: 150px;
   height: 150px;
@@ -54,7 +54,7 @@ export default {
   animation: move 3s linear infinite;
 }
 .bg-fly-circle3 {
-  right: 8%;
+  right: 10%;
   top: 140px;
   width: 145px;
   height: 145px;
@@ -65,7 +65,7 @@ export default {
 }
 
 .bg-fly-circle4 {
-  right: 15%;
+  right: 17%;
   top: 60%;
   width: 160px;
   height: 160px;
