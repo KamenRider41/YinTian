@@ -2,17 +2,16 @@
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
  * @LastEditors: 41
- * @LastEditTime: 2021-11-17 10:22:50
+ * @LastEditTime: 2021-11-17 10:35:03
  * @Description:
 -->
 <template>
   <div class="background" @click="changeSousuoFlag" >
-      <div class="fly bg-fly-circle1"></div>
-      <div class="fly bg-fly-circle2"></div>
-      <div class="fly bg-fly-circle3"></div>
-      <div class="fly bg-fly-circle4"></div>
+    <div class="fly bg-fly-circle1"></div>
+    <div class="fly bg-fly-circle2"></div>
+    <div class="fly bg-fly-circle3"></div>
+    <div class="fly bg-fly-circle4"></div>
     <div class='container'>
-
       <div class="header">
         <!-- 简简单单的标题组件 -->
         <div class="flex-left">
@@ -149,19 +148,12 @@ export default {
 </script>
 
 <style scoped>
-button{
-  width: 100px;
-  height: 50px;
-  background-color: bisque;
-}
 .background{
   width: 100%;
   height: 100%;
   background-image: url('https://api.ixiaowai.cn/gqapi/gqapi.php');
   /* background-repeat: no-repeat; */
   background-size: 100% 100%;
-  overflow: hidden;
-  position: relative;
 }
 .container{
     position: absolute;
@@ -171,7 +163,6 @@ button{
     left: 50%;
     transform: translateX(-600px);
     background-color: var(--background-color);
-
     margin-top: 0;
     font-family: 'Montserrat', sans-serif, Arial, 'Microsoft Yahei';
 }
