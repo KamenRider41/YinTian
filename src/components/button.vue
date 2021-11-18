@@ -1,14 +1,14 @@
 <!--
  * @Author: 41
  * @Date: 2021-11-17 16:21:59
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-11-17 21:32:25
+ * @LastEditors: 41
+ * @LastEditTime: 2021-11-18 08:33:29
  * @Description:
 -->
 <template>
     <div>
       <div class="switch">
-        <div class="btn" @click.stop="changeFlag"></div>
+        <div class="lightBtn" @click.stop="changeFlag"></div>
       </div>
     <audio :src="require('../assets/click.wav')" id="audio2" ></audio>
     </div>
@@ -25,7 +25,7 @@ export default {
   methods: {
     changeFlag () {
       console.log('click test')
-      let btn = document.querySelector('.btn')
+      let btn = document.querySelector('.lightBtn')
       let audio = document.querySelector('#audio2')
       audio.play()
       if (!this.flag) {
@@ -54,7 +54,7 @@ export default {
     justify-content: center;
     align-items: center;
 }
-.btn{
+.lightBtn{
     position: relative;
     padding: 1px 1px;
     box-sizing: border-box;
@@ -65,7 +65,7 @@ export default {
     border: 2px solid #000;
     cursor: pointer;
 }
-.btn::before{
+.lightBtn::before{
     content: '';
     position: absolute;
     left: 0;
@@ -74,7 +74,7 @@ export default {
     background: linear-gradient(#fff,#fff);
     border-radius: 4px;
 }
-.btn::before{
+.lightBtn::before{
     top: 0;
 }
 .on::before{
