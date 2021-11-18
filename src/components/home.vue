@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-11-18 20:43:16
+ * @LastEditTime: 2021-11-18 20:44:34
  * @Description:
 -->
 <template>
@@ -27,8 +27,7 @@
           v-model="music.isPlay"
         ></audiobox>
         <div class="flex-right">
-          <Submit class="mysubmit"
-                  v-if="sousuoFlag"></Submit>
+          <Submit class="mysubmit" v-if="sousuoFlag"></Submit>
           <!-- 搜索框 -->
           <Sousuo
             v-if="dev & (this.viewFlag !== 3)"
@@ -86,9 +85,13 @@
         :flag="bulbFlag"
       ></Bulb>
     </div>
-    <rain v-if="weaState === 1" :scale="scale" :analyser="music.analyser"></rain>
+    <rain
+      v-if="weaState === 1"
+      :scale="scale"
+      :analyser="music.analyser"
+    ></rain>
     <Cloud v-if="weaState === 3"></Cloud>
-    <Snow  v-if="weaState === 5"></Snow>
+    <Snow v-if="weaState === 5"></Snow>
 
     <!-- <rain v-else-if="weaState === 2"></rain>
     <rain v-else-if="weaState === 3"></rain>
@@ -127,9 +130,9 @@ export default {
     Cloud,
     Sun,
     Snow,
-    Submit
+    Submit,
   },
-  data() {
+  data () {
     return {
       dev: true, // 控制测试
       city: "长沙",
@@ -153,7 +156,7 @@ export default {
         name: "My Spanish Guitar Gently Weeps",
       },
       weaState: 1,
-      scale: 1
+      scale: 1,
     };
   },
   methods: {
@@ -167,7 +170,7 @@ export default {
           console.log(response.data.data.forecast, "aaa");
           that.weatherList = response.data.data.forecast; // 获得天气列表的信息
           that.weather = response.data.data.forecast[0].type; // 当前天气默认为今天的天气
-          console.log(response.data.data.forecast[0].type,"qq")
+          console.log(response.data.data.forecast[0].type, "qq");
           // 获得天气列表的日期信息
           that.Echarts_date = [];
           that.Echarts_low = [];
@@ -316,7 +319,7 @@ export default {
   align-items: center;
   margin-right: 50px;
 }
-.mysubmit{
+.mysubmit {
   margin-right: 10px;
 }
 .myswitch {
