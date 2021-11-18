@@ -1,13 +1,8 @@
 <!--
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
-<<<<<<< HEAD
  * @LastEditors: 41
- * @LastEditTime: 2021-11-18 22:45:52
-=======
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-11-18 22:45:14
->>>>>>> f4480cd72430397aeb156014604df689cacbb7ac
+ * @LastEditTime: 2021-11-18 23:17:14
  * @Description:
 -->
 <template>
@@ -33,6 +28,7 @@
           <h3 v-if="sousuoFlag">{{ this.date }}</h3>
         </div>
         <div class="flex-right">
+
           <Submit class="mysubmit" v-if="sousuoFlag" @getAudioFlag='updateMusicPlay($event)'></Submit>
           <!-- 搜索框 -->
           <Sousuo
@@ -84,6 +80,10 @@
           ></Echarts>
         </div>
       </div>
+
+      <Timer class="mytimer"
+          v-if="this.viewFlag === 3"
+      ></Timer>
       <BreathLight v-if="this.viewFlag === 3" class="breath"></BreathLight>
       <Bulb
         class="myBulb"
@@ -122,6 +122,7 @@ import Cloud from "@/components/Cloud/cloud.vue";
 import Sun from "@/components/Sun/sun.vue";
 import Snow from "@/components/snow/snow.vue";
 import Submit from "@/components/submit.vue";
+import Timer from "@/components/timer.vue";
 import { option } from "@/assets/options/options";
 export default {
   components: {
@@ -138,6 +139,7 @@ export default {
     Sun,
     Snow,
     Submit,
+    Timer
   },
   data() {
     return {
@@ -338,6 +340,10 @@ export default {
 .mybutton {
   margin-right: 20px;
 }
+.mytimer{
+  margin-left:45px;
+  
+}
 .echarts_tyqb {
   transition: 0.5s;
 }
@@ -348,6 +354,7 @@ export default {
   margin-top: 50px;
 }
 .breath {
+  margin-top: 50px;
   margin-left: 55px;
 }
 .myBulb {
