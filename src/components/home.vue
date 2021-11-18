@@ -1,12 +1,19 @@
 <!--
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-11-18 22:04:25
+ * @LastEditors: 41
+ * @LastEditTime: 2021-11-18 22:40:43
  * @Description:
 -->
 <template>
   <div class="background" @click="changeSousuoFlag">
+    <!-- <audiobox
+
+      ref="audiobox"
+      :src="music.src"
+      :musicName="music.name"
+      v-model="music.isPlay"
+    ></audiobox> -->
     <div class="fly bg-fly-circle1"></div>
     <div class="fly bg-fly-circle2"></div>
     <div class="fly bg-fly-circle3"></div>
@@ -20,14 +27,8 @@
           <h3 v-if="sousuoFlag">{{ this.weather }}</h3>
           <h3 v-if="sousuoFlag">{{ this.date }}</h3>
         </div>
-        <audiobox
-          ref="audiobox"
-          :src="music.src"
-          :musicName="music.name"
-          v-model="music.isPlay"
-        ></audiobox>
         <div class="flex-right">
-          <Submit class="mysubmit" v-if="sousuoFlag"></Submit>
+          <Submit class="mysubmit" v-if="sousuoFlag" @getAudioFlag='updateMusicPlay($event)'></Submit>
           <!-- 搜索框 -->
           <Sousuo
             v-if="dev & (this.viewFlag !== 3)"
@@ -164,7 +165,6 @@ export default {
     async searchWeather() {
       // 调用接口
       var that = this;
-
       this.$axios
         .get("/weather_mini?city=" + this.city)
         .then(function (response) {
@@ -197,6 +197,10 @@ export default {
     },
     updateDate(date) {
       this.date = date;
+    },
+    updateMusicPlay(flag){
+      console.log('回调得到submit传值'+flag);
+      this.music.isPlay=flag
     },
     updateWeatherType(type) {
       console.log(type);

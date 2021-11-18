@@ -2,13 +2,13 @@
  * @Author: 41
  * @Date: 2021-11-18 15:50:55
  * @LastEditors: 41
- * @LastEditTime: 2021-11-18 16:40:23
+ * @LastEditTime: 2021-11-18 22:37:43
  * @Description:
 -->
 <template>
     <div class="submitbox">
         <button class="noselect" @click="changeSubmit">
-            <span>Play/Pause</span>
+            <span>Pause</span>
             <svg xmlns="http://www.w3.org/2000/svg" width="24"
             height="24" viewBox="0 0 24 24">
                 <path
@@ -23,13 +23,23 @@
 export default {
   data () {
     return {
-
+      flag: true
     }
   },
   methods: {
     changeSubmit () {
-
+      if (this.flag === true) {
+        document.querySelector('.noselect').blur()
+        this.flag = false
+      } else {
+        document.querySelector('.noselect').focus()
+        this.flag = true
+      }
+      this.$emit('getAudioFlag', this.flag)
     }
+  },
+  mounted () {
+    document.querySelector('.noselect').focus()
   }
 }
 </script>
