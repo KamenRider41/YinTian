@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-17 16:21:59
  * @LastEditors: 41
- * @LastEditTime: 2021-11-18 08:33:29
+ * @LastEditTime: 2021-11-18 09:17:09
  * @Description:
 -->
 <template>
@@ -79,5 +79,6 @@ export default {
 }
 .on::before{
     top: 30%;
+    background-color: rgb(114, 112, 108);
 }
 </style>

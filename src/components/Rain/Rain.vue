@@ -94,7 +94,7 @@ export default {
           width: 2 * Math.random(),
           len: 20 + 20 * Math.random(),
           speed: 0,
-          color: "#ccc",
+          color: "rgb(114, 112, 108)",
           die: false,
         });
       }

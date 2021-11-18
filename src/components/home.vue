@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
  * @LastEditors: 41
- * @LastEditTime: 2021-11-18 08:46:17
+ * @LastEditTime: 2021-11-18 09:14:19
  * @Description:
 -->
 <template>
@@ -58,6 +58,7 @@
           :weatherList="weatherList"
           @changeDate="updateDate($event)"
           @changeWeather="updateWeather($event)"
+          @backWeatherType="updateWeatherType($event)"
         ></Tqyb>
         <div class="subcontainer">
           <!-- 低温高温的echarts表格！让人切身感受温差！ -->
@@ -75,11 +76,11 @@
       <BreathLight v-if="this.viewFlag === 3" class="breath"></BreathLight>
       <Bulb class="myBulb" v-if="this.viewFlag === 3" :flag="bulbFlag"></Bulb>
     </div>
-    <rain v-if="weaState == 1" :scale="1" :analyser="music.analyser"></rain>
-    <rain v-else-if="weaState == 2"></rain>
-    <rain v-else-if="weaState == 3"></rain>
-    <rain v-else-if="weaState == 4"></rain>
-    <rain v-else-if="weaState == 5"></rain>
+    <rain v-if="weaState === 1" :scale="1" :analyser="music.analyser"></rain>
+    <!-- <rain v-else-if="weaState === 2"></rain>
+    <rain v-else-if="weaState === 3"></rain>
+    <rain v-else-if="weaState === 4"></rain>
+    <rain v-else-if="weaState === 5"></rain> -->
   </div>
 </template>
 
@@ -171,6 +172,10 @@ export default {
     updateDate(date) {
       this.date = date;
     },
+    updateWeatherType(type){
+      console.log(type);
+      this.weaState=type
+    },
     getSearch(city) {
       if (city) {
         this.tempcity = this.city;
@@ -224,9 +229,10 @@ export default {
 .background {
   width: 100%;
   height: 100%;
-  background-image: url("https://api.ixiaowai.cn/gqapi/gqapi.php");
+  /* background-image: url("https://api.ixiaowai.cn/gqapi/gqapi.php");
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: 100% 100%; */
+  background-image: linear-gradient(45deg,rgb(238, 172, 172),rgb(245, 226, 191),rgb(236, 236, 186),rgb(176, 231, 176),rgb(173, 231, 231),rgb(164, 164, 231),rgb(230, 167, 230));
 }
 
 .container {

@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 09:30:46
  * @LastEditors: 41
- * @LastEditTime: 2021-11-17 10:38:19
+ * @LastEditTime: 2021-11-18 09:09:25
  * @Description:
 -->
 <template>
@@ -71,38 +71,45 @@ export default {
       console.log(this.weatherList[index].type) // 需要把这个传递给父组件
       let temp = this.weatherList[index].type
       let list = document.querySelector('.week-list')
+      let weatherType = 0 // 0表示不属于五种常见天气类型
       if (temp.indexOf('雨') !== -1) {
         console.log('发现雨')
         list.classList.add('yu')
+        weatherType = 1
       } else {
         list.classList.remove('yu')
       }
       if (temp.indexOf('晴') !== -1) {
         console.log('发现晴')
         list.classList.add('qing')
+        weatherType = 2
       } else {
         list.classList.remove('qing')
       }
       if (temp.indexOf('云') !== -1) {
         console.log('发现云')
         list.classList.add('cloud')
+        weatherType = 3
       } else {
         list.classList.remove('cloud')
       }
       if (temp.indexOf('阴') !== -1) {
         console.log('发现阴')
         list.classList.add('yin')
+        weatherType = 4
       } else {
         list.classList.remove('yin')
       }
       if (temp.indexOf('雪') !== -1) {
         console.log('发现雪')
         list.classList.add('xue')
+        weatherType = 5
       } else {
         list.classList.remove('xue')
       }
       this.$emit('changeWeather', this.weatherList[index].type)
       this.$emit('changeDate', this.weatherList[index].date)
+      this.$emit('backWeatherType', weatherType)
     }
   }
 }
