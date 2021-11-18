@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
  * @LastEditors: 41
- * @LastEditTime: 2021-11-18 13:42:38
+ * @LastEditTime: 2021-11-18 15:12:35
  * @Description:
 -->
 <template>
@@ -79,6 +79,7 @@
     </div>
     <rain v-if="weaState === 1" :scale="1" :analyser="music.analyser"></rain>
     <Cloud v-if="weaState === 3"></Cloud>
+
     <!-- <rain v-else-if="weaState === 2"></rain>
     <rain v-else-if="weaState === 3"></rain>
     <rain v-else-if="weaState === 4"></rain>
@@ -98,6 +99,7 @@ import Bulb from "@/components/bulb.vue";
 import Rain from "@/components/Rain/Rain.vue";
 import Button from "@/components/button.vue";
 import Cloud from "@/components/cloud.vue";
+import Sun from "@/components/sun.vue";
 import { option } from "@/assets/options/options";
 export default {
   components: {
@@ -110,7 +112,8 @@ export default {
     Bulb,
     Rain,
     Button,
-    Cloud
+    Cloud,
+    Sun
   },
   data() {
     return {
