@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
  * @LastEditors: 41
- * @LastEditTime: 2021-11-18 09:58:35
+ * @LastEditTime: 2021-11-18 11:30:07
  * @Description:
 -->
 <template>
@@ -31,8 +31,9 @@
           <!-- 有声音的按钮 -->
           <Button
             class="mybutton"
-            v-if="this.viewFlag === 3"
+            v-if="this.viewFlag === 3||this.weaState === 4"
             @mybuttonFlag="changeBulb($event)"
+
           ></Button>
           <!-- switch切换框 -->
           <Switchs
@@ -63,7 +64,7 @@
         <div class="subcontainer">
           <!-- 低温高温的echarts表格！让人切身感受温差！ -->
           <Echarts
-            v-if="dev & (this.viewFlag !== 2) & (this.viewFlag !== 3)"
+            v-if="dev & (this.viewFlag !== 2) & (this.viewFlag !== 3)&this.weaState !== 4"
             :options="options"
             :width="echartsWidth"
             :height="echartsheight"
@@ -74,7 +75,7 @@
         </div>
       </div>
       <BreathLight v-if="this.viewFlag === 3" class="breath"></BreathLight>
-      <Bulb class="myBulb" v-if="this.viewFlag === 3" :flag="bulbFlag"></Bulb>
+      <Bulb class="myBulb" v-if="this.viewFlag === 3||this.weaState === 4" :flag="bulbFlag"></Bulb>
     </div>
     <rain v-if="weaState === 1" :scale="1" :analyser="music.analyser"></rain>
     <Cloud v-if="weaState === 3"></Cloud>
@@ -177,6 +178,13 @@ export default {
     updateWeatherType(type){
       console.log(type);
       this.weaState=type
+      // console.log('123'+type);
+      let contain = document.querySelector(".container");
+      if(this.weaState===4){
+          contain.classList.add("black");
+      }else{
+          contain.classList.remove("black");
+      }
     },
     getSearch(city) {
       if (city) {
@@ -190,7 +198,7 @@ export default {
       this.viewFlag = flag;
       console.log(this.viewFlag);
       let contain = document.querySelector(".container");
-      if (this.viewFlag === 3) {
+      if (this.viewFlag === 3||(this.viewFlag===2&&this.weaState===4)) {
         contain.classList.add("black");
       } else {
         contain.classList.remove("black");
@@ -301,7 +309,7 @@ export default {
 .myBulb {
   position: fixed;
   top: 0;
-  left: 50%;
+  left: 75%;
   transform: translate(-50%, 0);
 }
 .black {
