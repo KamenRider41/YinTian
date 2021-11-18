@@ -116,7 +116,7 @@ export default {
           speedX = -speedX;
           x = x + speedX;
         }
-        if (y + radius > canvas.heyight || y - radius < 0) {
+        if (y + radius > canvas.height || y - radius < 0) {
           speedY = -speedY;
           y = y + speedY;
         }
