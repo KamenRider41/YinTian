@@ -3,7 +3,7 @@
     <div class="container">
       <canvas id="canvas"></canvas>
     </div>
-    <div>
+    <div class="bubbles">
       <div class="bubble"></div>
       <div class="bubble"></div>
       <div class="bubble"></div>
@@ -153,6 +153,14 @@ export default {
 #canvas {
   /* border: 1px solid black; */
   display: block;
+}
+.bubbles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 .bubble {
   position: absolute;
