@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 16:38:42
  * @LastEditors: 41
- * @LastEditTime: 2021-11-18 10:43:15
+ * @LastEditTime: 2021-11-18 10:54:38
  * @Description:
 -->
 <template>
@@ -51,17 +51,23 @@ export default {
   data() {
     return {
       city: "长沙",
+      lastFlag:false
     };
   },
   methods: {
     activeBox() {
+      
       let box = document.querySelector(".search-box");
       box.classList.add("active");
       this.$emit("sousuoFlag", false);
-            let audio=document.querySelector('#audio_sousuo')
-      audio.play()
+      let audio=document.querySelector('#audio_sousuo')
+      if(this.lastFlag===false){
+        audio.play()
+        this.lastFlag=true
+      }
     },
     deactiveBox() {
+      this.lastFlag=false
       let box = document.querySelector(".search-box");
       box.classList.remove("active");
     },
