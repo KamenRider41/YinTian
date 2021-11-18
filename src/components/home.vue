@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-11-18 16:06:05
+ * @LastEditTime: 2021-11-18 17:24:29
  * @Description:
 -->
 <template>
@@ -27,7 +27,8 @@
           v-model="music.isPlay"
         ></audiobox>
         <div class="flex-right">
-
+          <Submit class="mysubmit"
+                  v-if="sousuoFlag"></Submit>
           <!-- 搜索框 -->
           <Sousuo
             v-if="dev & (this.viewFlag !== 3)"
@@ -78,6 +79,7 @@
     </div>
     <rain v-if="weaState === 1" :scale="scale" :analyser="music.analyser"></rain>
     <Cloud v-if="weaState === 3"></Cloud>
+
     <!-- <rain v-else-if="weaState === 2"></rain>
     <rain v-else-if="weaState === 3"></rain>
     <rain v-else-if="weaState === 4"></rain>
@@ -97,6 +99,8 @@ import Bulb from "@/components/bulb.vue";
 import Rain from "@/components/Rain/Rain.vue";
 import Button from "@/components/button.vue";
 import Cloud from "@/components/cloud.vue";
+import Sun from "@/components/sun.vue";
+import Submit from "@/components/submit.vue";
 import { option } from "@/assets/options/options";
 export default {
   components: {
@@ -109,7 +113,9 @@ export default {
     Bulb,
     Rain,
     Button,
-    Cloud
+    Cloud,
+    Sun,
+    Submit
   },
   data() {
     return {
@@ -287,6 +293,9 @@ export default {
   justify-content: space-between;
   align-items: center;
   margin-right: 50px;
+}
+.mysubmit{
+  margin-right: 10px;
 }
 .myswitch {
   margin-right: 30px;

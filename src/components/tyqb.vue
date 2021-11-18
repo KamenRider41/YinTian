@@ -8,7 +8,9 @@
 <template>
     <div class="week-container">
         <ul class="week-list" >
-            <li id="day1" v-for="(item,index) in weatherList" :key="index" @click.stop="get_weather(index)">
+            <li id="day1" v-for="(item,index) in weatherList"
+                :key="index"
+                @click.stop="get_weather(index)">
                 <span :class="iconObj[item.type]"></span>
                 <span class="day-name">{{item.type}}</span>
                 <span class="day-name">{{item.date}}</span>
@@ -74,9 +76,7 @@ export default {
   },
   methods: {
     get_weather (index) {
-      // 获取音频组件
-      let checkFlag = 0
-
+      let checkFlag = 0 // 查询标志位
       console.log(this.weatherList[index].type) // 需要把这个传递给父组件
       let temp = this.weatherList[index].type
       let list = document.querySelector('.week-list')
