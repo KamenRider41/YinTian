@@ -29,7 +29,7 @@ export default {
       function snowMove() {
         // 1.js 创建 img
         let snowImg = document.createElement("img");
-        snowImg.className = 'jiujiu'
+        snowImg.className = 'snow'
         // 2.图片大小 随机
         snowImg.style.width = parseInt(Math.random() * 25 + 5) + "px";
         // 3.图片位置 随机
@@ -62,7 +62,7 @@ export default {
   width: 100vw;
 }
 
-.box .jiujiu {
+.box .snow {
   position: absolute;
   left: 0px;
   top: 50px;
