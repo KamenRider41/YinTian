@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
  * @LastEditors: 41
- * @LastEditTime: 2021-11-18 22:40:43
+ * @LastEditTime: 2021-11-18 22:45:52
  * @Description:
 -->
 <template>
@@ -354,4 +354,33 @@ export default {
 .black {
   background-color: var(--background-color);
 }
+h3:hover{
+  animation: animate 1s linear infinite;
+}
+/* 原理：
+通过逐帧动画，不同的时间点形状发生变化，原教程中使用scale3D，不如分开写好理解
+scaleX：横向缩放比例
+scaleY：纵向缩放比例 */
+
+@keyframes animate {
+    0% {
+        transform: scaleX(1) scaleY(1);
+    }
+    35% {
+        transform: scaleX(1.2) scaleY(0.75);
+    }
+    45% {
+        transform: scaleX(0.75) scaleY(1);
+    }
+    60% {
+        transform: scaleX(1.2) scaleY(0.8);
+    }
+    75% {
+        transform: scaleX(1.05) scaleY(0.9);
+    }
+    100% {
+        transform: scaleX(1) scaleY(1);
+    }
+}
+
 </style>
