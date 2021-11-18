@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
  * @LastEditors: 41
- * @LastEditTime: 2021-11-18 11:30:07
+ * @LastEditTime: 2021-11-18 12:31:19
  * @Description:
 -->
 <template>
@@ -28,18 +28,7 @@
           v-model="music.isPlay"
         ></audiobox> -->
         <div class="flex-right">
-          <!-- 有声音的按钮 -->
-          <Button
-            class="mybutton"
-            v-if="this.viewFlag === 3||this.weaState === 4"
-            @mybuttonFlag="changeBulb($event)"
 
-          ></Button>
-          <!-- switch切换框 -->
-          <Switchs
-            class="myswitch"
-            @toggleChange="changeView($event)"
-          ></Switchs>
           <!-- 搜索框 -->
           <Sousuo
             v-if="dev & (this.viewFlag !== 3)"
@@ -49,6 +38,17 @@
             @sousuoFlag="backSousuo($event)"
             >{{ city }}</Sousuo
           >
+          <!-- 有声音的按钮 -->
+          <Button
+            class="mybutton"
+            v-if="this.viewFlag === 3||this.weaState === 4"
+            @mybuttonFlag="changeBulb($event)"
+          ></Button>
+          <!-- switch切换框 -->
+          <Switchs
+            class="myswitch"
+            @toggleChange="changeView($event)"
+          ></Switchs>
         </div>
       </div>
       <div class="subject">
@@ -200,7 +200,7 @@ export default {
       let contain = document.querySelector(".container");
       if (this.viewFlag === 3||(this.viewFlag===2&&this.weaState===4)) {
         contain.classList.add("black");
-      } else {
+      } else if(this.weaState!==4){
         contain.classList.remove("black");
       }
     },
@@ -292,7 +292,7 @@ export default {
   margin-right: 30px;
 }
 .mybutton {
-  margin-right: 70px;
+  margin-right: 20px;
 }
 .echarts_tyqb {
   transition: 0.5s;
@@ -309,7 +309,7 @@ export default {
 .myBulb {
   position: fixed;
   top: 0;
-  left: 75%;
+  left: 80%;
   transform: translate(-50%, 0);
 }
 .black {

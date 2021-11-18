@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-17 16:21:59
  * @LastEditors: 41
- * @LastEditTime: 2021-11-18 11:12:16
+ * @LastEditTime: 2021-11-18 12:33:55
  * @Description:
 -->
 <template>
@@ -27,6 +27,7 @@ export default {
       console.log('click test')
       let btn = document.querySelector('.lightBtn')
       let audio = document.querySelector('#audio2')
+      audio.load()
       audio.play()
       if (!this.flag) {
         btn.classList.add('on')
