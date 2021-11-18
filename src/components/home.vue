@@ -1,19 +1,24 @@
 <!--
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
+<<<<<<< HEAD
  * @LastEditors: 41
  * @LastEditTime: 2021-11-18 22:45:52
+=======
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-11-18 22:45:14
+>>>>>>> f4480cd72430397aeb156014604df689cacbb7ac
  * @Description:
 -->
 <template>
   <div class="background" @click="changeSousuoFlag">
-    <!-- <audiobox
-
+    <audiobox
+      style="position:absolute;left:-1000px"
       ref="audiobox"
       :src="music.src"
       :musicName="music.name"
       v-model="music.isPlay"
-    ></audiobox> -->
+    ></audiobox>
     <div class="fly bg-fly-circle1"></div>
     <div class="fly bg-fly-circle2"></div>
     <div class="fly bg-fly-circle3"></div>
