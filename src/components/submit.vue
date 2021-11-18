@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-18 15:50:55
  * @LastEditors: 41
- * @LastEditTime: 2021-11-18 16:16:25
+ * @LastEditTime: 2021-11-18 16:40:23
  * @Description:
 -->
 <template>
@@ -23,7 +23,7 @@
 export default {
   data () {
     return {
-      submitFlag: true
+
     }
   },
   methods: {
@@ -37,18 +37,18 @@ export default {
 <style scoped>
 .submitbox{
     height: 100px;
-    width: 200px;
+    width: 100px;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #222;
+    /* background-color: #222; */
 }
-.select{
+/* .select{
     width: 100px;
     height: 50px;
     background: none;
-    border: 2px solid #89db84;
+    border: 2px solid #8b918b;
     border-radius: 50px;
     cursor: pointer;
     display: flex;
@@ -66,12 +66,12 @@ export default {
 }
 .select span{
     color:transparent
-}
+} */
 .noselect{
     width: 100px;
     height: 50px;
     background: none;
-    border: 2px solid #89db84;
+    border: 2px solid #5e635e;
     border-radius: 50px;
     cursor: pointer;
     display: flex;
@@ -82,7 +82,7 @@ export default {
 
 span,svg{
     position: absolute;
-    color: #89db84;
+    color: #5e635e;
     fill:transparent
 }
 .noselect:hover{
@@ -92,8 +92,8 @@ span,svg{
     outline: none;
     border: 2px solid transparent;
     width: 50px;
-    border-left: 2px solid #89db84;
-    border-bottom: 2px solid #89db84;
+    border-left: 2px solid #5e635e;
+    border-bottom: 2px solid #5e635e;
     animation: spin 2s 500ms forwards;
 }
 .noselect:focus span{
@@ -109,18 +109,18 @@ span,svg{
     }
     100%{
         transform: rotate(1080deg);
-        border: 2px solid #89db84;
+        border: 2px solid #5e635e;
     }
 }
 
 @keyframes check{
     to{
-        fill:#89db84
+        fill:#5e635e
     }
 }
 @keyframes circle{
     to{
-        border:2px solid #89db84
+        border:2px solid #5e635e
     }
 }
 </style>

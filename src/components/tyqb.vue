@@ -1,14 +1,16 @@
 <!--
  * @Author: 41
  * @Date: 2021-11-15 09:30:46
- * @LastEditors: 41
- * @LastEditTime: 2021-11-18 15:03:29
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-11-18 15:55:48
  * @Description:
 -->
 <template>
     <div class="week-container">
         <ul class="week-list" >
-            <li id="day1" v-for="(item,index) in weatherList" :key="index" @click.stop="get_weather(index)">
+            <li id="day1" v-for="(item,index) in weatherList"
+                :key="index"
+                @click.stop="get_weather(index)">
                 <span :class="iconObj[item.type]"></span>
                 <span class="day-name">{{item.type}}</span>
                 <span class="day-name">{{item.date}}</span>
@@ -19,7 +21,7 @@
         <audio :src="require('../assets/mp3/yu.mp3')" id="tyqb_audio_yu" ></audio>
         <audio :src="require('../assets/mp3/yin.mp3')" id="tyqb_audio_yin" ></audio>
         <audio :src="require('../assets/mp3/qing.mp3')" id="tyqb_audio_qing" ></audio>
-        <audio :src="require('../assets/mp3/mai777.mp3')" id="tyqb_audio_mai" ></audio>
+        <audio  id="tyqb_audio_mai" ></audio>
         <audio :src="require('../assets/mp3/notfind_DLAM.mp3')" id="tyqb_audio_other" ></audio>
         <audio :src="require('../assets/mp3/xue2.mp3')" id="tyqb_audio_xue" ></audio>
     </div>
@@ -74,9 +76,7 @@ export default {
   },
   methods: {
     get_weather (index) {
-      // 获取音频组件
-      let checkFlag = 0
-
+      let checkFlag = 0 // 查询标志位
       console.log(this.weatherList[index].type) // 需要把这个传递给父组件
       let temp = this.weatherList[index].type
       let list = document.querySelector('.week-list')

@@ -1,8 +1,8 @@
 <!--
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
- * @LastEditors: 41
- * @LastEditTime: 2021-11-18 15:12:35
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-11-18 17:24:29
  * @Description:
 -->
 <template>
@@ -20,14 +20,18 @@
           <h3 v-if="sousuoFlag">{{ this.weather }}</h3>
           <h3 v-if="sousuoFlag">{{ this.date }}</h3>
         </div>
-        <!-- <audiobox
-          v-if="sousuoFlag"
+        <audiobox
           ref="audiobox"
           :src="music.src"
           :musicName="music.name"
           v-model="music.isPlay"
-        ></audiobox> -->
+        ></audiobox>
         <div class="flex-right">
+<<<<<<< HEAD
+=======
+          <Submit class="mysubmit"
+                  v-if="sousuoFlag"></Submit>
+>>>>>>> 7bca7d1a20e0ce0e3e469280baaaaa4836fac72a
           <!-- 搜索框 -->
           <Sousuo
             v-if="dev & (this.viewFlag !== 3)"
@@ -85,7 +89,7 @@
         :flag="bulbFlag"
       ></Bulb>
     </div>
-    <rain v-if="weaState === 1" :scale="1" :analyser="music.analyser"></rain>
+    <rain v-if="weaState === 1" :scale="scale" :analyser="music.analyser"></rain>
     <Cloud v-if="weaState === 3"></Cloud>
     <Snow  v-if="weaState === 5"></Snow>
 
@@ -109,8 +113,12 @@ import Rain from "@/components/Rain/Rain.vue";
 import Button from "@/components/button.vue";
 import Cloud from "@/components/cloud.vue";
 import Sun from "@/components/sun.vue";
+<<<<<<< HEAD
 import Snow from "@/components/snow/snow.vue";
 
+=======
+import Submit from "@/components/submit.vue";
+>>>>>>> 7bca7d1a20e0ce0e3e469280baaaaa4836fac72a
 import { option } from "@/assets/options/options";
 export default {
   components: {
@@ -125,7 +133,11 @@ export default {
     Button,
     Cloud,
     Sun,
+<<<<<<< HEAD
     Snow,
+=======
+    Submit
+>>>>>>> 7bca7d1a20e0ce0e3e469280baaaaa4836fac72a
   },
   data() {
     return {
@@ -151,6 +163,10 @@ export default {
         name: "My Spanish Guitar Gently Weeps",
       },
       weaState: 1,
+<<<<<<< HEAD
+=======
+      scale: 1
+>>>>>>> 7bca7d1a20e0ce0e3e469280baaaaa4836fac72a
     };
   },
   methods: {
@@ -246,7 +262,7 @@ export default {
   },
   mounted() {
     this.check_data();
-    this.analyser = this.$refs.audiobox.getAudioAnalyser();
+    this.music.analyser = this.$refs.audiobox.getAudioAnalyser();
   },
 };
 </script>
@@ -312,6 +328,9 @@ export default {
   justify-content: space-between;
   align-items: center;
   margin-right: 50px;
+}
+.mysubmit{
+  margin-right: 10px;
 }
 .myswitch {
   margin-right: 30px;
