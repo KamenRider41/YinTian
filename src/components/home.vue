@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
  * @LastEditors: 41
- * @LastEditTime: 2021-11-18 23:17:14
+ * @LastEditTime: 2021-11-18 23:19:28
  * @Description:
 -->
 <template>
@@ -69,6 +69,7 @@
               dev &
               (this.viewFlag !== 2) &
               (this.viewFlag !== 3) &
+              (this.weaState !== 2) &
               (this.weaState !== 4)
             "
             :options="options"
