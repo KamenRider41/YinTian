@@ -81,7 +81,7 @@ export default {
       let { canvasElement: canvas } = this;
       // 偏角 / 加速度
       let angle = 0;
-      let gravity = this.scale * 0.06;
+      let gravity = this.scale * 0.1;
 
       const lineList = [],
         lineNum = 2 + 2 * that.scale;
@@ -92,9 +92,9 @@ export default {
           x: canvas.width * Math.random() - 0.5 * canvas.width * Math.random(),
           y: -100,
           width: 2 * Math.random(),
-          len: 20 + 20 * Math.random(),
+          len: 10 + 30 * Math.random(),
           speed: 0,
-          color: "rgb(114, 112, 108)",
+          color: "#aaa",
           die: false,
         });
       }
