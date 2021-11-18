@@ -1,8 +1,8 @@
 <!--
  * @Author: 41
  * @Date: 2021-11-15 16:38:42
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-11-17 14:11:39
+ * @LastEditors: 41
+ * @LastEditTime: 2021-11-18 10:43:15
  * @Description:
 -->
 <template>
@@ -23,6 +23,7 @@
       <a href="javascript:;">
         <i class="iconfont icon-suozaidi"></i>
       </a>
+      <audio :src="require('../assets/mp3/switch2.mp3')"  id="audio_sousuo" ></audio>
     </div>
 
     <!-- <h1>{{this.city}}</h1> -->
@@ -44,6 +45,7 @@ export default {
       if(this.flag===true){
         this.deactiveBox()
       }
+
     }
   },
   data() {
@@ -56,6 +58,8 @@ export default {
       let box = document.querySelector(".search-box");
       box.classList.add("active");
       this.$emit("sousuoFlag", false);
+            let audio=document.querySelector('#audio_sousuo')
+      audio.play()
     },
     deactiveBox() {
       let box = document.querySelector(".search-box");

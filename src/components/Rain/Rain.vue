@@ -81,7 +81,7 @@ export default {
       let { canvasElement: canvas } = this;
       // 偏角 / 加速度
       let angle = 0;
-      let gravity = this.scale * 0.25;
+      let gravity = this.scale * 0.06;
 
       const lineList = [],
         lineNum = 2 + 2 * that.scale;

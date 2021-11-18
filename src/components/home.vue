@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
  * @LastEditors: 41
- * @LastEditTime: 2021-11-18 09:32:55
+ * @LastEditTime: 2021-11-18 09:58:35
  * @Description:
 -->
 <template>
@@ -20,13 +20,13 @@
           <h3 v-if="sousuoFlag">{{ this.weather }}</h3>
           <h3 v-if="sousuoFlag">{{ this.date }}</h3>
         </div>
-        <audiobox
+        <!-- <audiobox
           v-if="sousuoFlag"
           ref="audiobox"
           :src="music.src"
           :musicName="music.name"
           v-model="music.isPlay"
-        ></audiobox>
+        ></audiobox> -->
         <div class="flex-right">
           <!-- 有声音的按钮 -->
           <Button
@@ -127,7 +127,7 @@ export default {
       Echarts_high: [],
       viewFlag: 1,
       bulbFlag: false,
-      sousuoFlag: false,
+      sousuoFlag: true,
       music: {
         analyser: null,
         isPlay: true,
