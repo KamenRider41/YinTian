@@ -2,13 +2,13 @@
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-11-18 23:29:56
+ * @LastEditTime: 2021-11-18 23:34:26
  * @Description:
 -->
 <template>
   <div class="background" @click="changeSousuoFlag">
     <audiobox
-      style="position:absolute;left:-1000px"
+      style="position: absolute; left: -1000px"
       ref="audiobox"
       :src="music.src"
       :musicName="music.name"
@@ -28,8 +28,11 @@
           <h3 v-if="sousuoFlag">{{ this.date }}</h3>
         </div>
         <div class="flex-right">
-
-          <Submit class="mysubmit" v-if="sousuoFlag" @getAudioFlag='updateMusicPlay($event)'></Submit>
+          <Submit
+            class="mysubmit"
+            v-if="sousuoFlag"
+            @getAudioFlag="updateMusicPlay($event)"
+          ></Submit>
           <!-- 搜索框 -->
           <Sousuo
             v-if="dev & (this.viewFlag !== 3)"
@@ -82,9 +85,7 @@
         </div>
       </div>
 
-      <Timer class="mytimer"
-          v-if="this.viewFlag === 3"
-      ></Timer>
+      <Timer class="mytimer" v-if="this.viewFlag === 3"></Timer>
       <BreathLight v-if="this.viewFlag === 3" class="breath"></BreathLight>
       <Bulb
         class="myBulb"
@@ -140,7 +141,7 @@ export default {
     Sun,
     Snow,
     Submit,
-    Timer
+    Timer,
   },
   data() {
     return {
@@ -206,9 +207,9 @@ export default {
     updateDate(date) {
       this.date = date;
     },
-    updateMusicPlay(flag){
-      console.log('回调得到submit传值'+flag);
-      this.music.isPlay=flag
+    updateMusicPlay(flag) {
+      console.log("回调得到submit传值" + flag);
+      this.music.isPlay = flag;
     },
     updateWeatherType(type) {
       console.log(type);
@@ -341,9 +342,11 @@ export default {
 .mybutton {
   margin-right: 20px;
 }
-.mytimer{
-  margin-left:45px;
-  
+.mytimer {
+  position: absolute;
+  left: 50%;
+  top: 35%;
+  transform: translateX(-50%);
 }
 .echarts_tyqb {
   transition: 0.5s;
@@ -355,8 +358,10 @@ export default {
   margin-top: 50px;
 }
 .breath {
-  margin-top: 50px;
-  margin-left: 55px;
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  transform: translateX(-50%);
 }
 .myBulb {
   position: fixed;
@@ -367,7 +372,7 @@ export default {
 .black {
   background-color: var(--background-color);
 }
-h3:hover{
+h3:hover {
   animation: animate 1s linear infinite;
 }
 /* 原理：
@@ -376,24 +381,23 @@ scaleX：横向缩放比例
 scaleY：纵向缩放比例 */
 
 @keyframes animate {
-    0% {
-        transform: scaleX(1) scaleY(1);
-    }
-    35% {
-        transform: scaleX(1.2) scaleY(0.75);
-    }
-    45% {
-        transform: scaleX(0.75) scaleY(1);
-    }
-    60% {
-        transform: scaleX(1.2) scaleY(0.8);
-    }
-    75% {
-        transform: scaleX(1.05) scaleY(0.9);
-    }
-    100% {
-        transform: scaleX(1) scaleY(1);
-    }
+  0% {
+    transform: scaleX(1) scaleY(1);
+  }
+  35% {
+    transform: scaleX(1.2) scaleY(0.75);
+  }
+  45% {
+    transform: scaleX(0.75) scaleY(1);
+  }
+  60% {
+    transform: scaleX(1.2) scaleY(0.8);
+  }
+  75% {
+    transform: scaleX(1.05) scaleY(0.9);
+  }
+  100% {
+    transform: scaleX(1) scaleY(1);
+  }
 }
-
 </style>
