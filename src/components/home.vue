@@ -1,8 +1,8 @@
 <!--
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-11-17 22:27:40
+ * @LastEditors: 41
+ * @LastEditTime: 2021-11-18 08:46:17
  * @Description:
 -->
 <template>
@@ -16,11 +16,12 @@
         <!-- 简简单单的标题组件 -->
         <div class="flex-left">
           <Title v-if="dev" class="title"></Title>
-          <h3>{{ this.city }}</h3>
-          <h3>{{ this.weather }}</h3>
-          <h3>{{ this.date }}</h3>
+          <h3 v-if="sousuoFlag">{{ this.city }}</h3>
+          <h3 v-if="sousuoFlag">{{ this.weather }}</h3>
+          <h3 v-if="sousuoFlag">{{ this.date }}</h3>
         </div>
         <audiobox
+          v-if="sousuoFlag"
           ref="audiobox"
           :src="music.src"
           :musicName="music.name"
