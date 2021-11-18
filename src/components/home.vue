@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
  * @LastEditors: 41
- * @LastEditTime: 2021-11-18 15:12:35
+ * @LastEditTime: 2021-11-18 16:43:58
  * @Description:
 -->
 <template>
@@ -20,6 +20,7 @@
           <h3 v-if="sousuoFlag">{{ this.weather }}</h3>
           <h3 v-if="sousuoFlag">{{ this.date }}</h3>
         </div>
+
         <!-- <audiobox
           v-if="sousuoFlag"
           ref="audiobox"
@@ -28,7 +29,8 @@
           v-model="music.isPlay"
         ></audiobox> -->
         <div class="flex-right">
-
+          <Submit class="mysubmit"
+                  v-if="sousuoFlag"></Submit>
           <!-- 搜索框 -->
           <Sousuo
             v-if="dev & (this.viewFlag !== 3)"
@@ -100,6 +102,7 @@ import Rain from "@/components/Rain/Rain.vue";
 import Button from "@/components/button.vue";
 import Cloud from "@/components/cloud.vue";
 import Sun from "@/components/sun.vue";
+import Submit from "@/components/submit.vue";
 import { option } from "@/assets/options/options";
 export default {
   components: {
@@ -113,7 +116,8 @@ export default {
     Rain,
     Button,
     Cloud,
-    Sun
+    Sun,
+    Submit
   },
   data() {
     return {
@@ -290,6 +294,9 @@ export default {
   justify-content: space-between;
   align-items: center;
   margin-right: 50px;
+}
+.mysubmit{
+  margin-right: 10px;
 }
 .myswitch {
   margin-right: 30px;
