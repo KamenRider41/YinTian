@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-11-18 23:20:46
+ * @LastEditTime: 2021-11-18 23:29:56
  * @Description:
 -->
 <template>
@@ -28,6 +28,7 @@
           <h3 v-if="sousuoFlag">{{ this.date }}</h3>
         </div>
         <div class="flex-right">
+
           <Submit class="mysubmit" v-if="sousuoFlag" @getAudioFlag='updateMusicPlay($event)'></Submit>
           <!-- 搜索框 -->
           <Sousuo
@@ -68,6 +69,7 @@
               dev &
               (this.viewFlag !== 2) &
               (this.viewFlag !== 3) &
+              (this.weaState !== 2) &
               (this.weaState !== 4)
             "
             :options="options"
@@ -79,6 +81,10 @@
           ></Echarts>
         </div>
       </div>
+
+      <Timer class="mytimer"
+          v-if="this.viewFlag === 3"
+      ></Timer>
       <BreathLight v-if="this.viewFlag === 3" class="breath"></BreathLight>
       <Bulb
         class="myBulb"
@@ -117,6 +123,7 @@ import Cloud from "@/components/Cloud/cloud.vue";
 import Sun from "@/components/Sun/sun.vue";
 import Snow from "@/components/snow/snow.vue";
 import Submit from "@/components/submit.vue";
+import Timer from "@/components/timer.vue";
 import { option } from "@/assets/options/options";
 export default {
   components: {
@@ -133,6 +140,7 @@ export default {
     Sun,
     Snow,
     Submit,
+    Timer
   },
   data() {
     return {
@@ -333,6 +341,10 @@ export default {
 .mybutton {
   margin-right: 20px;
 }
+.mytimer{
+  margin-left:45px;
+  
+}
 .echarts_tyqb {
   transition: 0.5s;
 }
@@ -343,6 +355,7 @@ export default {
   margin-top: 50px;
 }
 .breath {
+  margin-top: 50px;
   margin-left: 55px;
 }
 .myBulb {
@@ -354,4 +367,33 @@ export default {
 .black {
   background-color: var(--background-color);
 }
+h3:hover{
+  animation: animate 1s linear infinite;
+}
+/* 原理：
+通过逐帧动画，不同的时间点形状发生变化，原教程中使用scale3D，不如分开写好理解
+scaleX：横向缩放比例
+scaleY：纵向缩放比例 */
+
+@keyframes animate {
+    0% {
+        transform: scaleX(1) scaleY(1);
+    }
+    35% {
+        transform: scaleX(1.2) scaleY(0.75);
+    }
+    45% {
+        transform: scaleX(0.75) scaleY(1);
+    }
+    60% {
+        transform: scaleX(1.2) scaleY(0.8);
+    }
+    75% {
+        transform: scaleX(1.05) scaleY(0.9);
+    }
+    100% {
+        transform: scaleX(1) scaleY(1);
+    }
+}
+
 </style>
