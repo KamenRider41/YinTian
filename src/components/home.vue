@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-11-18 22:45:14
+ * @LastEditTime: 2021-11-18 23:20:46
  * @Description:
 -->
 <template>
@@ -92,7 +92,7 @@
       :analyser="music.analyser"
     ></Rain>
     <Sun v-else-if="weaState === 2" :analyser="music.analyser"></Sun>
-    <Cloud v-else-if="weaState === 3"></Cloud>
+    <Cloud v-else-if="weaState === 3" :analyser="music.analyser"></Cloud>
     <Snow v-else-if="weaState === 5"></Snow>
 
     <!-- <rain v-else-if="weaState === 2"></rain>
