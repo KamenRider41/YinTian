@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
  * @LastEditors: 41
- * @LastEditTime: 2021-11-18 09:14:19
+ * @LastEditTime: 2021-11-18 09:32:55
  * @Description:
 -->
 <template>
@@ -77,6 +77,7 @@
       <Bulb class="myBulb" v-if="this.viewFlag === 3" :flag="bulbFlag"></Bulb>
     </div>
     <rain v-if="weaState === 1" :scale="1" :analyser="music.analyser"></rain>
+    <Cloud v-if="weaState === 3"></Cloud>
     <!-- <rain v-else-if="weaState === 2"></rain>
     <rain v-else-if="weaState === 3"></rain>
     <rain v-else-if="weaState === 4"></rain>
@@ -95,7 +96,7 @@ import BreathLight from "@/components/breathLight.vue";
 import Bulb from "@/components/bulb.vue";
 import Rain from "@/components/Rain/Rain.vue";
 import Button from "@/components/button.vue";
-
+import Cloud from "@/components/cloud.vue";
 import { option } from "@/assets/options/options";
 export default {
   components: {
@@ -108,6 +109,7 @@ export default {
     Bulb,
     Rain,
     Button,
+    Cloud
   },
   data() {
     return {

@@ -6,11 +6,11 @@
         :src="require('@/assets/fenghuanghuakaidelukou.mp3')"
       ></audio>
       <canvas id="canvas"></canvas>
-      <div class="controller">
+      <!-- <div class="controller">
         <button id="music-btn" @click="togglePlay">
           <span>Play/Pause</span>
         </button>
-      </div>
+      </div> -->
     </div>
     <div>
       <div class="bubble"></div>
@@ -140,10 +140,10 @@ export default {
     /* position: relative; */
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    /* width: 100vw;
+    height: 100vh; */
     z-index: -10;
-    background-image: linear-gradient(to top, #6a85b6 0%, #bac8e0 100%);
+    /* background-image: linear-gradient(to top, #6a85b6 0%, #bac8e0 100%); */
 
   }
   .controller{
@@ -163,9 +163,9 @@ export default {
     border-radius: 10px;
   }
   #canvas {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     width: 1200px;
-    height: 100vh;
+    height: 100%;
   }
   .bubble {
     position: absolute;
