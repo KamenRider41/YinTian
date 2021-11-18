@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-11-18 20:44:34
+ * @LastEditTime: 2021-11-18 22:04:25
  * @Description:
 -->
 <template>
@@ -85,13 +85,14 @@
         :flag="bulbFlag"
       ></Bulb>
     </div>
-    <rain
+    <Rain
       v-if="weaState === 1"
       :scale="scale"
       :analyser="music.analyser"
-    ></rain>
-    <Cloud v-if="weaState === 3"></Cloud>
-    <Snow v-if="weaState === 5"></Snow>
+    ></Rain>
+    <Sun v-else-if="weaState === 2" :analyser="music.analyser"></Sun>
+    <Cloud v-else-if="weaState === 3"></Cloud>
+    <Snow v-else-if="weaState === 5"></Snow>
 
     <!-- <rain v-else-if="weaState === 2"></rain>
     <rain v-else-if="weaState === 3"></rain>
@@ -111,8 +112,8 @@ import BreathLight from "@/components/breathLight.vue";
 import Bulb from "@/components/bulb.vue";
 import Rain from "@/components/Rain/Rain.vue";
 import Button from "@/components/button.vue";
-import Cloud from "@/components/cloud.vue";
-import Sun from "@/components/sun.vue";
+import Cloud from "@/components/Cloud/cloud.vue";
+import Sun from "@/components/Sun/sun.vue";
 import Snow from "@/components/snow/snow.vue";
 import Submit from "@/components/submit.vue";
 import { option } from "@/assets/options/options";
@@ -132,7 +133,7 @@ export default {
     Snow,
     Submit,
   },
-  data () {
+  data() {
     return {
       dev: true, // 控制测试
       city: "长沙",

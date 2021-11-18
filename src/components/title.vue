@@ -1,8 +1,8 @@
 <!--
  * @Author: 41
  * @Date: 2021-11-13 20:10:54
- * @LastEditors: 41
- * @LastEditTime: 2021-11-17 11:44:17
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-11-18 21:55:42
  * @Description:
 -->
 <template>
@@ -40,7 +40,6 @@ export default {
     color:#544e58
 }
 .contain h3:before{
-    font-style:italic;
     position: absolute;
     /* 这里必须是Unicode编码 */
     content: '\963f\91cc\5df4\5df4\4e94\76d7';

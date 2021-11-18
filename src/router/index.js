@@ -1,15 +1,15 @@
 /*
  * @Author: 41
  * @Date: 2021-11-13 20:05:27
- * @LastEditors: 41
- * @LastEditTime: 2021-11-18 15:52:18
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-11-18 22:03:51
  * @Description:
  */
 import Vue from 'vue'
 import Router from 'vue-router'
 import home from '@/components/home'
-import test from '@/components/submit'
-import cloud from '@/components/cloud'
+import test from '@/components/Sun/sun'
+import cloud from '@/components/Cloud/cloud'
 import snow from '@/components/snow/snow'
 
 Vue.use(Router)
