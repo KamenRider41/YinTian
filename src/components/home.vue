@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-11-18 17:24:29
+ * @LastEditTime: 2021-11-18 20:43:16
  * @Description:
 -->
 <template>
@@ -27,11 +27,8 @@
           v-model="music.isPlay"
         ></audiobox>
         <div class="flex-right">
-<<<<<<< HEAD
-=======
           <Submit class="mysubmit"
                   v-if="sousuoFlag"></Submit>
->>>>>>> 7bca7d1a20e0ce0e3e469280baaaaa4836fac72a
           <!-- 搜索框 -->
           <Sousuo
             v-if="dev & (this.viewFlag !== 3)"
@@ -113,12 +110,8 @@ import Rain from "@/components/Rain/Rain.vue";
 import Button from "@/components/button.vue";
 import Cloud from "@/components/cloud.vue";
 import Sun from "@/components/sun.vue";
-<<<<<<< HEAD
 import Snow from "@/components/snow/snow.vue";
-
-=======
 import Submit from "@/components/submit.vue";
->>>>>>> 7bca7d1a20e0ce0e3e469280baaaaa4836fac72a
 import { option } from "@/assets/options/options";
 export default {
   components: {
@@ -133,11 +126,8 @@ export default {
     Button,
     Cloud,
     Sun,
-<<<<<<< HEAD
     Snow,
-=======
     Submit
->>>>>>> 7bca7d1a20e0ce0e3e469280baaaaa4836fac72a
   },
   data() {
     return {
@@ -163,10 +153,7 @@ export default {
         name: "My Spanish Guitar Gently Weeps",
       },
       weaState: 1,
-<<<<<<< HEAD
-=======
       scale: 1
->>>>>>> 7bca7d1a20e0ce0e3e469280baaaaa4836fac72a
     };
   },
   methods: {
