@@ -2,11 +2,11 @@
  * @Author: 41
  * @Date: 2021-11-16 16:12:33
  * @LastEditors: 41
- * @LastEditTime: 2021-11-18 10:41:19
+ * @LastEditTime: 2021-11-18 12:18:21
  * @Description:
 -->
 <template>
-        <div id="toggle" @click.stop='changeToggle'>
+        <div id="toggle" @click.stop='fnThrottle(changeToggle,500)'>
             <i class="indicator"></i>
             <audio :src="require('../assets/mp3/switch.mp3')" id="audio_switch" ></audio>
             <!-- <audio :src="require('../assets/click.wav')" id="audio2" ></audio> -->
@@ -28,19 +28,62 @@ export default {
       if (this.flag === 1) {
         toggle.classList.add('active1')
         this.flag = 2
+        switch1.load()
         switch1.play()
       } else if (this.flag === 2) {
         toggle.classList.remove('active1')
         toggle.classList.add('active2')
         this.flag = 3
+        switch1.load()
         switch1.play()
       } else {
         toggle.classList.remove('active2')
         this.flag = 1
+        switch1.load()
         switch1.play()
       }
       this.$emit('toggleChange', this.flag)
+    },
+    fnThrottle (method, duration) {
+      let begin = new Date().getTime()
+      let lastbegin = begin
+      let timer = null
+      return (function () {
+        let current = new Date().getTime()
+        clearTimeout(timer)
+        if (current - lastbegin >= duration) {
+          method()
+          begin = current
+        } else {
+          console.log('switch节流')
+          console.log('switch设置定时器' + current)
+          timer = setTimeout(() => {
+            let current = new Date().getTime()
+            console.log('switch执行定时器' + current)
+            method()
+            lastbegin = current
+          }, (current - lastbegin) - duration)
+        }
+      }())
     }
+
+    // fnThrottle (method, delay, duration) {
+    //   let that = this
+    //   let timer = this.timer
+    //   let begin = new Date().getTime()
+    //   return function () {
+    //     let current = new Date().getTime()
+    //     clearTimeout(timer)
+    //     if (current - begin >= duration) {
+    //       method()
+    //       begin = current
+    //     } else {
+    //       that.timer = setTimeout(function () {
+    //         method()
+    //       }, delay)
+    //     }
+    //   }
+    // }
   }
 }
 </script>
