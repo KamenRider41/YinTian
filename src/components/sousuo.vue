@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 16:38:42
  * @LastEditors: 41
- * @LastEditTime: 2021-11-18 11:09:57
+ * @LastEditTime: 2021-11-18 11:34:13
  * @Description:
 -->
 <template>
@@ -23,7 +23,7 @@
       <a href="javascript:;">
         <i class="iconfont icon-suozaidi"></i>
       </a>
-      <audio :src="require('../assets/mp3/switch2.mp3')"  id="audio_sousuo2" ></audio>
+      <audio :src="require('../assets/mp3/switch2_1.mp3')"  id="audio_sousuo2" ></audio>
       <audio :src="require('../assets/mp3/switch.mp3')"  id="audio_sousuo" ></audio>
     </div>
 
@@ -61,9 +61,9 @@ export default {
       let box = document.querySelector(".search-box");
       box.classList.add("active");
       this.$emit("sousuoFlag", false);
-      let audio=document.querySelector('#audio_sousuo')
+      // let audio=document.querySelector('#audio_sousuo')
       if(this.lastFlag===false){
-        audio.play()
+        // audio.play()
         audio_sousuo2.play()
         this.lastFlag=true
       }
