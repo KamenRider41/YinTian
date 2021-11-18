@@ -9,19 +9,25 @@
 <script>
 /* eslint-disable */
 export default {
+  props: {
+    analyser: null,
+  },
   data() {
     return {
       ctx: null,
       canvasElement: null,
+      bufferLength: null,
       dataArray: Array,
-      analyser: null,
     };
   },
 
   mounted() {
     this.canvasElement = document.getElementById("canvas");
-    console.log("analyser", this.analyser);
-    this.initAudio();
+
+    if (this.analyser !== null) {
+      this.initAudio();
+      this.draw();
+    }
   },
 
   methods: {
@@ -29,8 +35,8 @@ export default {
     initAudio() {
       // 创建频率数组
       this.analyser.fftSize = 128;
-      let bufferLength = analyser.frequencyBinCount;
-      this.dataArray = new Uint8Array(bufferLength);
+      this.bufferLength = this.analyser.frequencyBinCount;
+      this.dataArray = new Uint8Array(this.bufferLength);
     },
 
     // 绘图
@@ -40,22 +46,23 @@ export default {
         this.ctx = canvas.getContext("2d");
         canvas.width = 1200;
         canvas.height = window.innerHeight;
+
+        this.WIDTH = canvas.width;
+        this.HEIGHT = canvas.height;
+        this.ctx.translate(canvas.width / 2, canvas.height / 2);
+        this.barWidth = this.WIDTH / this.bufferLength;
+        this.renderFrame();
       } else {
         alert("Your Browser can't support the canvas");
       }
-
-      this.WIDTH = canvas.width;
-      this.HEIGHT = canvas.height;
-      this.ctx.translate(canvas.width / 2, canvas.height / 2);
-      this.barWidth = this.WIDTH / this.bufferLength;
-      this.renderFrame();
     },
     renderFrame() {
+      console.log("Draw Sun!!");
       requestAnimationFrame(this.renderFrame);
       this.analyser.getByteFrequencyData(this.dataArray);
       this.ctx.clearRect(
-        this.WIDTH,
-        this.HEIGHT,
+        -this.WIDTH,
+        -this.HEIGHT,
         2 * this.WIDTH,
         2 * this.HEIGHT
       );
@@ -69,19 +76,11 @@ export default {
         this.ctx.fillRect(barX, barY, barW, barH);
       }
     },
-
-    // 转换播放状态
-    togglePlay() {
-      if (audioCtx.state === "suspended") {
-        audioCtx.resume();
-      }
-      if (this.isplay) {
-        this.audioElement.pause();
-      } else {
-        this.audioElement.play();
-        this.draw();
-      }
-      this.isplay = !this.isplay;
+  },
+  watch: {
+    analyser() {
+      this.initAudio();
+      this.draw();
     },
   },
 };

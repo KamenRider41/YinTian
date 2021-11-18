@@ -1,10 +1,6 @@
 <template>
   <div class="cloud">
     <div class="container">
-      <audio
-        id="audio"
-        :src="require('@/assets/fenghuanghuakaidelukou.mp3')"
-      ></audio>
       <canvas id="canvas"></canvas>
       <!-- <div class="controller">
         <button id="music-btn" @click="togglePlay">
