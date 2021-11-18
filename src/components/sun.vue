@@ -1,16 +1,7 @@
 <template>
   <div class="cloud">
     <div class="container">
-      <audio
-        id="audio"
-        :src="require('@/assets/fenghuanghuakaidelukou.mp3')"
-      ></audio>
       <canvas id="canvas"></canvas>
-      <div class="controller">
-        <button id="music-btn" @click="togglePlay">
-          <span>Play/Pause</span>
-        </button>
-      </div>
     </div>
   </div>
 </template>
@@ -22,31 +13,24 @@ const analyser = audioCtx.createAnalyser()
 export default {
   data () {
     return {
-      speed: Number,
-      audioElement: null,
       canvasElement: null,
       dataArray: Array,
-      bufferLength: 0
+      analyser: null
     }
   },
 
   mounted   () {
-    this.audioElement = document.getElementById('audio')
     this.canvasElement = document.getElementById('canvas')
-    this.init()
+    this.initAudio()
   },
 
   methods: {
     //  初始化
-    init () {
-      let source = audioCtx.createMediaElementSource(this.audioElement)
-      source.connect(analyser)
-      analyser.connect(audioCtx.destination)
-
+    initAudio () {
       // 创建频率数组
-      analyser.fftSize = 128
-      this.bufferLength = analyser.frequencyBinCount
-      this.dataArray = new Uint8Array(this.bufferLength)
+      this.analyser.fftSize = 128
+      let bufferLength = analyser.frequencyBinCount
+      this.dataArray = new Uint8Array(bufferLength)
     },
 
     // 绘图
@@ -111,22 +95,6 @@ export default {
     top: 0;
     left: 0;
     z-index: -10;
-  }
-  .controller{
-    position: absolute;
-    z-index: 9999;
-    bottom: 40px;
-    left: 50%;
-    width: 120px;
-    height: 40px;
-    text-align: center;
-  }
-  #music-btn{
-    width: 120px;
-    height: 40px;
-    cursor: pointer;
-    background-color: #9890e3;
-    border-radius: 10px;
   }
   #canvas {
     /* border: 1px solid black; */

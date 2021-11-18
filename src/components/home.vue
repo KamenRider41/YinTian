@@ -1,8 +1,8 @@
 <!--
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
- * @LastEditors: 41
- * @LastEditTime: 2021-11-18 13:42:38
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-11-18 16:06:05
  * @Description:
 -->
 <template>
@@ -20,13 +20,12 @@
           <h3 v-if="sousuoFlag">{{ this.weather }}</h3>
           <h3 v-if="sousuoFlag">{{ this.date }}</h3>
         </div>
-        <!-- <audiobox
-          v-if="sousuoFlag"
+        <audiobox
           ref="audiobox"
           :src="music.src"
           :musicName="music.name"
           v-model="music.isPlay"
-        ></audiobox> -->
+        ></audiobox>
         <div class="flex-right">
 
           <!-- 搜索框 -->
@@ -77,7 +76,7 @@
       <BreathLight v-if="this.viewFlag === 3" class="breath"></BreathLight>
       <Bulb class="myBulb" v-if="this.viewFlag === 3||this.weaState === 4" :flag="bulbFlag"></Bulb>
     </div>
-    <rain v-if="weaState === 1" :scale="1" :analyser="music.analyser"></rain>
+    <rain v-if="weaState === 1" :scale="scale" :analyser="music.analyser"></rain>
     <Cloud v-if="weaState === 3"></Cloud>
     <!-- <rain v-else-if="weaState === 2"></rain>
     <rain v-else-if="weaState === 3"></rain>
@@ -135,7 +134,8 @@ export default {
         src: require("@/assets/My Spanish Guitar Gently Weeps.mp3"),
         name: "My Spanish Guitar Gently Weeps",
       },
-      weaState: 1
+      weaState: 1,
+      scale: 1
     };
   },
   methods: {
@@ -230,7 +230,7 @@ export default {
   },
   mounted() {
     this.check_data();
-    this.analyser = this.$refs.audiobox.getAudioAnalyser();
+    this.music.analyser = this.$refs.audiobox.getAudioAnalyser();
   },
 };
 </script>

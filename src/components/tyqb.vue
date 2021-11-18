@@ -1,8 +1,8 @@
 <!--
  * @Author: 41
  * @Date: 2021-11-15 09:30:46
- * @LastEditors: 41
- * @LastEditTime: 2021-11-18 15:03:29
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-11-18 15:55:48
  * @Description:
 -->
 <template>
@@ -19,7 +19,7 @@
         <audio :src="require('../assets/mp3/yu.mp3')" id="tyqb_audio_yu" ></audio>
         <audio :src="require('../assets/mp3/yin.mp3')" id="tyqb_audio_yin" ></audio>
         <audio :src="require('../assets/mp3/qing.mp3')" id="tyqb_audio_qing" ></audio>
-        <audio :src="require('../assets/mp3/mai777.mp3')" id="tyqb_audio_mai" ></audio>
+        <audio  id="tyqb_audio_mai" ></audio>
         <audio :src="require('../assets/mp3/notfind_DLAM.mp3')" id="tyqb_audio_other" ></audio>
         <audio :src="require('../assets/mp3/xue2.mp3')" id="tyqb_audio_xue" ></audio>
     </div>

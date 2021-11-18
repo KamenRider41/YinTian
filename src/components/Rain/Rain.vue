@@ -41,6 +41,8 @@ export default {
   methods: {
     //  初始化
     initAudio() {
+      console.log("Init Audio");
+
       // 创建频率数组
       this.analyser.fftSize = 256;
       let bufferLength = this.analyser.frequencyBinCount; //128
@@ -48,7 +50,7 @@ export default {
 
       // 测试生成数据
       // setInterval(() => {
-      //   analyser.getByteFrequencyData(this.dataArray);
+      //   this.analyser.getByteFrequencyData(this.dataArray);
       //   console.log(this.dataArray);
       // }, 1000);
     },
@@ -61,6 +63,7 @@ export default {
         // 可认为 window.innerWidth = document.documentElement.clientWidth
         // canvas.height = window.innerHeight - canvas.offsetTop;
         // canvas.width = window.innerWidth;
+
         let container = document.querySelector(".container");
         canvas.height = container.clientHeight - canvas.offsetTop;
         canvas.width = container.clientWidth;
@@ -81,10 +84,10 @@ export default {
       let { canvasElement: canvas } = this;
       // 偏角 / 加速度
       let angle = 0;
-      let gravity = this.scale * 0.1;
+      let gravity = this.scale * 0.05;
 
       const lineList = [],
-        lineNum = 2 + 2 * that.scale;
+        lineNum = 1 + 2 * that.scale;
 
       function createLine() {
         // x坐标保证全屏覆盖
@@ -94,10 +97,11 @@ export default {
           width: 2 * Math.random(),
           len: 10 + 30 * Math.random(),
           speed: 0,
-          color: "#aaa",
+          color: "rgba(0,0,0,.2)",
           die: false,
         });
       }
+
       // 鼠标引导雨点移动
       window.onmousemove = (e) => {
         // 减少横向的灵敏度
@@ -109,10 +113,30 @@ export default {
         // 获取偏角
         angle = Math.atan2(offsetY, offsetX);
       };
+
+      // 开始渲染
       window.requestAnimationFrame(draw);
       function draw() {
         // 清空
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // 音频分析
+        let lastDataArray = [...that.dataArray];
+        that.analyser.getByteFrequencyData(that.dataArray);
+        let ratio = 0;
+        for (let i = 0; i < that.dataArray.length; i++) {
+          ratio += that.dataArray[i] / (lastDataArray[i] + 1);
+        }
+        ratio = ratio / that.dataArray.length;
+        // if (ratio > 0.5) {
+        //   let x = 1000 * Math.random,
+        //     y = y * Math.random();
+        //   ctx.beginPath();
+        //   ctx.moveTo(x, y);
+        //   ctx.lineTo(x - 100, y + 170);
+        //   ctx.lineTo(x + 100, y + 170);
+        //   ctx.fill();
+        // }
 
         lineList.forEach((e) => {
           // 风向影响
@@ -127,6 +151,9 @@ export default {
           ctx.moveTo(e.x, e.y);
           ctx.lineTo(nextX, nextY);
           ctx.strokeStyle = e.color;
+          if (ratio > 0.7 && Math.random() > ratio) {
+            ctx.strokeStyle = "rgba(0,0,0,.7)";
+          }
           ctx.stroke();
 
           // 重力影响增加速度
@@ -158,8 +185,8 @@ export default {
 // cnpm install less@3.9.0 less-loader@5.0.0 -s
 .container {
   position: absolute;
-
   z-index: 1;
+
   #audio {
     position: absolute;
   }
