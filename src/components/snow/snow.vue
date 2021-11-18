@@ -1,7 +1,7 @@
 <template>
-  <div class="snow">
-    <div class="box"></div>
-  </div>
+    <div class="snow">
+        <div class="box" />
+    </div>
 </template>
 
 <script>
@@ -29,6 +29,7 @@ export default {
       function snowMove() {
         // 1.js 创建 img
         let snowImg = document.createElement("img");
+        snowImg.className = 'jiujiu'
         // 2.图片大小 随机
         snowImg.style.width = parseInt(Math.random() * 25 + 5) + "px";
         // 3.图片位置 随机
@@ -53,7 +54,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .box {
   overflow: hidden;
   position: absolute;
@@ -61,7 +62,7 @@ export default {
   width: 100vw;
 }
 
-.box img {
+.box .jiujiu {
   position: absolute;
   left: 0px;
   top: 50px;
