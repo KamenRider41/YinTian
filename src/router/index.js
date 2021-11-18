@@ -10,6 +10,7 @@ import Router from 'vue-router'
 import home from '@/components/home'
 import test from '@/components/submit'
 import cloud from '@/components/cloud'
+import snow from '@/components/snow/snow'
 
 Vue.use(Router)
 
@@ -29,6 +30,11 @@ export default new Router({
       path: '/cloud',
       name: 'cloud',
       component: cloud
+    },
+    {
+      path: '/snow',
+      name: 'snow',
+      component: snow
     }
   ]
 })

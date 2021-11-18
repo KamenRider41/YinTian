@@ -28,7 +28,6 @@
           v-model="music.isPlay"
         ></audiobox> -->
         <div class="flex-right">
-
           <!-- 搜索框 -->
           <Sousuo
             v-if="dev & (this.viewFlag !== 3)"
@@ -41,7 +40,7 @@
           <!-- 有声音的按钮 -->
           <Button
             class="mybutton"
-            v-if="this.viewFlag === 3||this.weaState === 4"
+            v-if="this.viewFlag === 3 || this.weaState === 4"
             @mybuttonFlag="changeBulb($event)"
           ></Button>
           <!-- switch切换框 -->
@@ -64,7 +63,12 @@
         <div class="subcontainer">
           <!-- 低温高温的echarts表格！让人切身感受温差！ -->
           <Echarts
-            v-if="dev & (this.viewFlag !== 2) & (this.viewFlag !== 3)&this.weaState !== 4"
+            v-if="
+              dev &
+              (this.viewFlag !== 2) &
+              (this.viewFlag !== 3) &
+              (this.weaState !== 4)
+            "
             :options="options"
             :width="echartsWidth"
             :height="echartsheight"
@@ -75,10 +79,15 @@
         </div>
       </div>
       <BreathLight v-if="this.viewFlag === 3" class="breath"></BreathLight>
-      <Bulb class="myBulb" v-if="this.viewFlag === 3||this.weaState === 4" :flag="bulbFlag"></Bulb>
+      <Bulb
+        class="myBulb"
+        v-if="this.viewFlag === 3 || this.weaState === 4"
+        :flag="bulbFlag"
+      ></Bulb>
     </div>
     <rain v-if="weaState === 1" :scale="1" :analyser="music.analyser"></rain>
     <Cloud v-if="weaState === 3"></Cloud>
+    <Snow  v-if="weaState === 5"></Snow>
 
     <!-- <rain v-else-if="weaState === 2"></rain>
     <rain v-else-if="weaState === 3"></rain>
@@ -100,6 +109,8 @@ import Rain from "@/components/Rain/Rain.vue";
 import Button from "@/components/button.vue";
 import Cloud from "@/components/cloud.vue";
 import Sun from "@/components/sun.vue";
+import Snow from "@/components/snow/snow.vue";
+
 import { option } from "@/assets/options/options";
 export default {
   components: {
@@ -113,7 +124,8 @@ export default {
     Rain,
     Button,
     Cloud,
-    Sun
+    Sun,
+    Snow,
   },
   data() {
     return {
@@ -138,7 +150,7 @@ export default {
         src: require("@/assets/My Spanish Guitar Gently Weeps.mp3"),
         name: "My Spanish Guitar Gently Weeps",
       },
-      weaState: 1
+      weaState: 1,
     };
   },
   methods: {
@@ -149,9 +161,10 @@ export default {
       this.$axios
         .get("/weather_mini?city=" + this.city)
         .then(function (response) {
-          console.log(response.data.data.forecast);
+          console.log(response.data.data.forecast, "aaa");
           that.weatherList = response.data.data.forecast; // 获得天气列表的信息
           that.weather = response.data.data.forecast[0].type; // 当前天气默认为今天的天气
+          console.log(response.data.data.forecast[0].type,"qq")
           // 获得天气列表的日期信息
           that.Echarts_date = [];
           that.Echarts_low = [];
@@ -178,15 +191,15 @@ export default {
     updateDate(date) {
       this.date = date;
     },
-    updateWeatherType(type){
+    updateWeatherType(type) {
       console.log(type);
-      this.weaState=type
+      this.weaState = type;
       // console.log('123'+type);
       let contain = document.querySelector(".container");
-      if(this.weaState===4){
-          contain.classList.add("black");
-      }else{
-          contain.classList.remove("black");
+      if (this.weaState === 4) {
+        contain.classList.add("black");
+      } else {
+        contain.classList.remove("black");
       }
     },
     getSearch(city) {
@@ -201,9 +214,9 @@ export default {
       this.viewFlag = flag;
       console.log(this.viewFlag);
       let contain = document.querySelector(".container");
-      if (this.viewFlag === 3||(this.viewFlag===2&&this.weaState===4)) {
+      if (this.viewFlag === 3 || (this.viewFlag === 2 && this.weaState === 4)) {
         contain.classList.add("black");
-      } else if(this.weaState!==4){
+      } else if (this.weaState !== 4) {
         contain.classList.remove("black");
       }
     },
@@ -245,7 +258,16 @@ export default {
   /* background-image: url("https://api.ixiaowai.cn/gqapi/gqapi.php");
   background-repeat: no-repeat;
   background-size: 100% 100%; */
-  background-image: linear-gradient(45deg,rgb(238, 172, 172),rgb(245, 226, 191),rgb(236, 236, 186),rgb(176, 231, 176),rgb(173, 231, 231),rgb(164, 164, 231),rgb(230, 167, 230));
+  background-image: linear-gradient(
+    45deg,
+    rgb(238, 172, 172),
+    rgb(245, 226, 191),
+    rgb(236, 236, 186),
+    rgb(176, 231, 176),
+    rgb(173, 231, 231),
+    rgb(164, 164, 231),
+    rgb(230, 167, 230)
+  );
 }
 
 .container {
