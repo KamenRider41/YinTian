@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
  * @LastEditors: 41
- * @LastEditTime: 2021-11-18 12:31:19
+ * @LastEditTime: 2021-11-18 13:42:38
  * @Description:
 -->
 <template>
@@ -135,7 +135,7 @@ export default {
         src: require("@/assets/My Spanish Guitar Gently Weeps.mp3"),
         name: "My Spanish Guitar Gently Weeps",
       },
-      weaState: 1,
+      weaState: 1
     };
   },
   methods: {

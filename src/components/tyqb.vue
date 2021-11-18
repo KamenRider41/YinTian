@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 09:30:46
  * @LastEditors: 41
- * @LastEditTime: 2021-11-18 09:09:25
+ * @LastEditTime: 2021-11-18 15:03:29
  * @Description:
 -->
 <template>
@@ -16,6 +16,12 @@
                 <span class="day-temp">{{item.high}}</span>
             </li>
         </ul>
+        <audio :src="require('../assets/mp3/yu.mp3')" id="tyqb_audio_yu" ></audio>
+        <audio :src="require('../assets/mp3/yin.mp3')" id="tyqb_audio_yin" ></audio>
+        <audio :src="require('../assets/mp3/qing.mp3')" id="tyqb_audio_qing" ></audio>
+        <audio :src="require('../assets/mp3/mai777.mp3')" id="tyqb_audio_mai" ></audio>
+        <audio :src="require('../assets/mp3/notfind_DLAM.mp3')" id="tyqb_audio_other" ></audio>
+        <audio :src="require('../assets/mp3/xue2.mp3')" id="tyqb_audio_xue" ></audio>
     </div>
 </template>
 
@@ -68,25 +74,40 @@ export default {
   },
   methods: {
     get_weather (index) {
+      // 获取音频组件
+      let checkFlag = 0
+
       console.log(this.weatherList[index].type) // 需要把这个传递给父组件
       let temp = this.weatherList[index].type
       let list = document.querySelector('.week-list')
       let weatherType = 0 // 0表示不属于五种常见天气类型
       if (temp.indexOf('雨') !== -1) {
+        checkFlag = 1
         console.log('发现雨')
+        let tyqbAudioYu = document.querySelector('#tyqb_audio_yu')
+        tyqbAudioYu.load()
+        tyqbAudioYu.play()
         list.classList.add('yu')
         weatherType = 1
       } else {
         list.classList.remove('yu')
       }
       if (temp.indexOf('晴') !== -1) {
+        checkFlag = 2
         console.log('发现晴')
+        let tyqbAudioQing = document.querySelector('#tyqb_audio_qing')
+        tyqbAudioQing.load()
+        tyqbAudioQing.play()
         list.classList.add('qing')
         weatherType = 2
       } else {
         list.classList.remove('qing')
       }
       if (temp.indexOf('云') !== -1) {
+        let tyqbAudioOther = document.querySelector('#tyqb_audio_other')
+        tyqbAudioOther.load()
+        tyqbAudioOther.play()
+        checkFlag = 3
         console.log('发现云')
         list.classList.add('cloud')
         weatherType = 3
@@ -94,23 +115,44 @@ export default {
         list.classList.remove('cloud')
       }
       if (temp.indexOf('阴') !== -1) {
+        checkFlag = 4
         console.log('发现阴')
+        let tyqbAudioYin = document.querySelector('#tyqb_audio_yin')
+        tyqbAudioYin.load()
+        tyqbAudioYin.play()
         list.classList.add('yin')
         weatherType = 4
       } else {
         list.classList.remove('yin')
       }
       if (temp.indexOf('雪') !== -1) {
+        checkFlag = 5
         console.log('发现雪')
+        let tyqbAudioXue = document.querySelector('#tyqb_audio_xue')
+        tyqbAudioXue.load()
+        tyqbAudioXue.play()
         list.classList.add('xue')
         weatherType = 5
       } else {
         list.classList.remove('xue')
       }
+      if (temp.indexOf('霾') !== -1) {
+        checkFlag = 6
+        console.log('霾')
+        let tyqbAudioMai = document.querySelector('#tyqb_audio_mai')
+        tyqbAudioMai.load()
+        tyqbAudioMai.play()
+      }
+      if (checkFlag === 0) { // 其他情况
+        let tyqbAudioOther = document.querySelector('#tyqb_audio_other')
+        tyqbAudioOther.load()
+        tyqbAudioOther.play()
+      }
       this.$emit('changeWeather', this.weatherList[index].type)
       this.$emit('changeDate', this.weatherList[index].date)
       this.$emit('backWeatherType', weatherType)
     }
+
   }
 }
 </script>
