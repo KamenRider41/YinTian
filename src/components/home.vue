@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
  * @LastEditors: 41
- * @LastEditTime: 2021-11-19 15:37:22
+ * @LastEditTime: 2021-11-19 16:30:13
  * @Description:
 -->
 <template>
@@ -182,7 +182,7 @@ export default {
       sousuoFlag: true,
       music: {
         analyser: null,
-        isPlay: true,
+        isPlay: false,
         src: require("@/assets/My Spanish Guitar Gently Weeps.mp3"),
         name: "My Spanish Guitar Gently Weeps",
       },
@@ -294,7 +294,7 @@ export default {
 <style scoped>
 .background {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   /* background-image: url("https://api.ixiaowai.cn/gqapi/gqapi.php");
   background-repeat: no-repeat;
   background-size: 100% 100%; */
@@ -308,6 +308,7 @@ export default {
     rgb(164, 164, 231),
     rgb(230, 167, 230)
   );
+  overflow: hidden;
 }
 
 .container {
