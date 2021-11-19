@@ -1,8 +1,8 @@
 <!--
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-11-19 12:49:34
+ * @LastEditors: 41
+ * @LastEditTime: 2021-11-19 15:37:22
  * @Description:
 -->
 <template>
@@ -191,7 +191,7 @@ export default {
     };
   },
   methods: {
-    async searchWeather() {
+    searchWeather() {
       // 调用接口
       var that = this;
       this.$axios
