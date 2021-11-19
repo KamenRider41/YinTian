@@ -69,8 +69,8 @@ export default {
     // 创建气泡
     createBubble() {
       for (let i = 0; i < this.bufferLength; i++) {
-        let x = 0.7025 * canvas.width;
-        let y = 0.6 * canvas.height;
+        let x = 0.682 * canvas.width;
+        let y = 0.595 * canvas.height;
         let speedX = (Math.random() - 0.5) * 0.01;
         let speedY = (Math.random() - 0.5) * 0.01;
         let color =

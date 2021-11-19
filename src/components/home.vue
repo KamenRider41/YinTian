@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
  * @LastEditors: 41
- * @LastEditTime: 2021-11-19 16:30:13
+ * @LastEditTime: 2021-11-19 17:08:49
  * @Description:
 -->
 <template>
@@ -72,7 +72,7 @@
               dev &
               (this.viewFlag !== 2) &
               (this.viewFlag !== 3) &
-              (this.weaState !== 2) &
+              (this.weaState !== 2 | this.music.isPlay !==true) &
               (this.weaState !== 4)
             "
             :options="options"
@@ -182,7 +182,7 @@ export default {
       sousuoFlag: true,
       music: {
         analyser: null,
-        isPlay: false,
+        isPlay: true,
         src: require("@/assets/My Spanish Guitar Gently Weeps.mp3"),
         name: "My Spanish Guitar Gently Weeps",
       },
