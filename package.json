@@ -19,7 +19,7 @@
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
     "vue": "^2.5.2",
-    "vue-audiobox": "^1.0.7",
+    "vue-audiobox": "^1.0.10",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {

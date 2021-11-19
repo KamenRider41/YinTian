@@ -104,7 +104,7 @@ export default {
       // 更新绘制
       this.myContainer.forEach((ball, index) => {
         let { x, y, speedX, speedY, radius, color } = ball;
-        console.log(ball.x);
+        // console.log(ball.x);
         let frequencyVolume = this.dataArray[index];
 
         canvasCtx.beginPath();

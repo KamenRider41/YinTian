@@ -1,3 +1,10 @@
+<!--
+ * @Author: 41
+ * @Date: 2021-11-19 09:30:41
+ * @LastEditors: 41
+ * @LastEditTime: 2021-11-19 09:35:39
+ * @Description:
+-->
 <template>
     <div class="snow">
         <div class="box" />
@@ -63,6 +70,7 @@ export default {
 }
 
 .box .snow {
+  /* background-color: blue; */
   position: absolute;
   left: 0px;
   top: 50px;

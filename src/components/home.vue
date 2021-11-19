@@ -1,8 +1,8 @@
 <!--
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-11-18 23:34:26
+ * @LastEditors: 41
+ * @LastEditTime: 2021-11-19 10:49:19
  * @Description:
 -->
 <template>
@@ -100,6 +100,7 @@
     ></Rain>
     <Sun v-else-if="weaState === 2" :analyser="music.analyser"></Sun>
     <Cloud v-else-if="weaState === 3" :analyser="music.analyser"></Cloud>
+    <Yin v-else-if="weaState === 4" :analyser="music.analyser"></Yin>
     <Snow v-else-if="weaState === 5"></Snow>
 
     <!-- <rain v-else-if="weaState === 2"></rain>
@@ -125,6 +126,7 @@ import Sun from "@/components/Sun/sun.vue";
 import Snow from "@/components/snow/snow.vue";
 import Submit from "@/components/submit.vue";
 import Timer from "@/components/timer.vue";
+import Yin from  "@/components/Yin/yin.vue";
 import { option } from "@/assets/options/options";
 export default {
   components: {
@@ -142,6 +144,7 @@ export default {
     Snow,
     Submit,
     Timer,
+    Yin
   },
   data() {
     return {

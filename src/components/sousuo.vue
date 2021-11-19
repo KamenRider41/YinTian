@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 16:38:42
  * @LastEditors: 41
- * @LastEditTime: 2021-11-18 11:34:13
+ * @LastEditTime: 2021-11-19 10:32:50
  * @Description:
 -->
 <template>
@@ -142,8 +142,11 @@ export default {
     },
     
   },
-  mounted(){
+  created(){
     this.locationCity()
+  },
+  mounted(){
+    
   }
 };
 </script>

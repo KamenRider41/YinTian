@@ -9811,10 +9811,10 @@
   "resolved" "https://registry.npm.taobao.org/vm-browserify/download/vm-browserify-1.1.2.tgz"
   "version" "1.1.2"
 
-"vue-audiobox@^1.0.7":
-  "integrity" "sha512-rE69pMRUDBZDi4rICraBFq9/ftvZvdif53/YR6J9wwGhcNlldDfy6ATwEcnUjvoDqGwud8v/k+DvO6kzkNTYdw=="
-  "resolved" "https://registry.npmmirror.com/vue-audiobox/download/vue-audiobox-1.0.7.tgz"
-  "version" "1.0.7"
+"vue-audiobox@^1.0.10":
+  "integrity" "sha512-nk2i3eXLkSkbh5zQV6at8BKS3S2SOLyOL72efWirPVH2kkDzrjmE+hNCXL/YQTQYkUr/ss+JxzNeQuRd83zaBQ=="
+  "resolved" "https://registry.npmmirror.com/vue-audiobox/download/vue-audiobox-1.0.10.tgz"
+  "version" "1.0.10"
 
 "vue-eslint-parser@^2.0.3":
   "integrity" "sha1-wmjJbG2Uz+PZOKX3WTlZsMozYNE="
