@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-11-19 16:21:46
+ * @LastEditTime: 2021-11-19 16:32:30
  * @Description:
 -->
 <template>
@@ -182,7 +182,7 @@ export default {
       sousuoFlag: true,
       music: {
         analyser: null,
-        isPlay: false,
+        isPlay: true,
         src: require("@/assets/My Spanish Guitar Gently Weeps.mp3"),
         name: "My Spanish Guitar Gently Weeps",
       },
