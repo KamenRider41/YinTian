@@ -1,13 +1,13 @@
 <!--
  * @Author: 41
  * @Date: 2021-11-13 20:10:54
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-11-18 21:55:42
+ * @LastEditors: 41
+ * @LastEditTime: 2021-11-19 16:38:38
  * @Description:
 -->
 <template>
     <div class='contain'>
-        <h3> ______________ </h3>
+        <h3> ________________</h3>
     </div>
 </template>
 
@@ -42,7 +42,7 @@ export default {
 .contain h3:before{
     position: absolute;
     /* 这里必须是Unicode编码 */
-    content: '\963f\91cc\5df4\5df4\4e94\76d7';
+    content: '\9879\76ee\540d\79f0\ff1a\97f3\5929';
     /* 颜色改为透明让背景色显示出来 */
     color:transparent;
     /* 使用linear-gradient函数生成一个渐变图片做背景 */
@@ -56,7 +56,7 @@ export default {
     分别位左上，右上，右下，左下  单位为百分比*/
     clip-path:polygon(-20% 0%,0% 0%, -10% 100%,-30% 100%);
     /* 增加动画 */
-    animation:light 2s infinite;
+    animation:light 3s infinite;
 }
 
 @keyframes light{

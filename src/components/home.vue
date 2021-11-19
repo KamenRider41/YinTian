@@ -2,7 +2,7 @@
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2021-11-19 16:32:30
+ * @LastEditTime: 2021-11-19 19:58:03
  * @Description:
 -->
 <template>
@@ -72,7 +72,7 @@
               dev &
               (this.viewFlag !== 2) &
               (this.viewFlag !== 3) &
-              (this.weaState !== 2) &
+              (this.weaState !== 2 | this.music.isPlay !==true) &
               (this.weaState !== 4)
             "
             :options="options"
@@ -191,7 +191,7 @@ export default {
     };
   },
   methods: {
-    async searchWeather() {
+    searchWeather() {
       // 调用接口
       var that = this;
       this.$axios
