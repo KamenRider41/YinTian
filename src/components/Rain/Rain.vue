@@ -133,15 +133,6 @@ export default {
           ratio += that.dataArray[i] / (lastDataArray[i] + 1);
         }
         ratio = ratio / that.dataArray.length;
-        // if (ratio > 0.5) {
-        //   let x = 1000 * Math.random,
-        //     y = y * Math.random();
-        //   ctx.beginPath();
-        //   ctx.moveTo(x, y);
-        //   ctx.lineTo(x - 100, y + 170);
-        //   ctx.lineTo(x + 100, y + 170);
-        //   ctx.fill();
-        // }
 
         lineList.forEach((e) => {
           // 风向影响
