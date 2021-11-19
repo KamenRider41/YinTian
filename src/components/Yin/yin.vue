@@ -12,6 +12,7 @@
 export default {
   props: {
     analyser: null,
+    state: Number,
   },
   data() {
     return {
@@ -68,8 +69,8 @@ export default {
     // 创建气泡
     createBubble() {
       for (let i = 0; i < this.bufferLength; i++) {
-        let x = 0.7025* canvas.width;
-        let y = 0.6* canvas.height;
+        let x = 0.7025 * canvas.width;
+        let y = 0.6 * canvas.height;
         let speedX = (Math.random() - 0.5) * 0.01;
         let speedY = (Math.random() - 0.5) * 0.01;
         let color =
@@ -86,7 +87,8 @@ export default {
       // 清空
       canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
 
-      requestAnimationFrame(this.renderFrame);
+      let requestId = requestAnimationFrame(this.renderFrame);
+      if (this.state != 4) window.cancelAnimationFrame(requestId);
       this.analyser.getByteFrequencyData(this.dataArray);
 
       // 更新绘制

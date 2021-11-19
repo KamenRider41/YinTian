@@ -11,6 +11,7 @@
 export default {
   props: {
     analyser: null,
+    state: Number,
   },
   data() {
     return {
@@ -57,8 +58,9 @@ export default {
       }
     },
     renderFrame() {
-      console.log("Draw Sun!!");
-      requestAnimationFrame(this.renderFrame);
+      let requestId = requestAnimationFrame(this.renderFrame);
+      if (this.state != 2) window.cancelAnimationFrame(requestId);
+
       this.analyser.getByteFrequencyData(this.dataArray);
       this.ctx.clearRect(
         -this.WIDTH,

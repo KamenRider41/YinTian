@@ -24,6 +24,7 @@
 export default {
   props: {
     analyser: null,
+    state: Number,
   },
   data() {
     return {
@@ -98,7 +99,9 @@ export default {
       // 清空
       canvasCtx.clearRect(0, 0, canvas.width, canvas.height);
 
-      requestAnimationFrame(this.renderFrame);
+      let requestId = requestAnimationFrame(this.renderFrame);
+      if (this.state != 3) window.cancelAnimationFrame(requestId);
+
       this.analyser.getByteFrequencyData(this.dataArray);
 
       // 更新绘制
@@ -131,6 +134,11 @@ export default {
         ball.radius = radius;
         ball.color = color;
       });
+    },
+  },
+  watch: {
+    analyser() {
+      this.initAudio();
     },
   },
 };

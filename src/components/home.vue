@@ -1,8 +1,8 @@
 <!--
  * @Author: 41
  * @Date: 2021-11-15 09:14:59
- * @LastEditors: 41
- * @LastEditTime: 2021-11-19 10:49:19
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-11-19 12:49:34
  * @Description:
 -->
 <template>
@@ -97,11 +97,28 @@
       v-if="weaState === 1"
       :scale="scale"
       :analyser="music.analyser"
+      :state="weaState"
     ></Rain>
-    <Sun v-else-if="weaState === 2" :analyser="music.analyser"></Sun>
-    <Cloud v-else-if="weaState === 3" :analyser="music.analyser"></Cloud>
-    <Yin v-else-if="weaState === 4" :analyser="music.analyser"></Yin>
-    <Snow v-else-if="weaState === 5"></Snow>
+    <Sun
+      v-else-if="weaState === 2"
+      :analyser="music.analyser"
+      :state="weaState"
+    ></Sun>
+    <Cloud
+      v-else-if="weaState === 3"
+      :analyser="music.analyser"
+      :state="weaState"
+    ></Cloud>
+    <Yin
+      v-else-if="weaState === 4"
+      :analyser="music.analyser"
+      :state="weaState"
+    ></Yin>
+    <Snow
+      v-else-if="weaState === 5"
+      :analyser="music.analyser"
+      :state="weaState"
+    ></Snow>
 
     <!-- <rain v-else-if="weaState === 2"></rain>
     <rain v-else-if="weaState === 3"></rain>
@@ -126,7 +143,7 @@ import Sun from "@/components/Sun/sun.vue";
 import Snow from "@/components/snow/snow.vue";
 import Submit from "@/components/submit.vue";
 import Timer from "@/components/timer.vue";
-import Yin from  "@/components/Yin/yin.vue";
+import Yin from "@/components/Yin/yin.vue";
 import { option } from "@/assets/options/options";
 export default {
   components: {
@@ -144,7 +161,7 @@ export default {
     Snow,
     Submit,
     Timer,
-    Yin
+    Yin,
   },
   data() {
     return {

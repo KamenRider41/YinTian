@@ -20,6 +20,9 @@ export default {
     analyser: {
       type: null,
     },
+    state: {
+      type: Number,
+    },
   },
   data() {
     return {
@@ -115,8 +118,10 @@ export default {
       };
 
       // 开始渲染
-      window.requestAnimationFrame(draw);
+      let requestId = window.requestAnimationFrame(draw);
       function draw() {
+        if (that.state != 1) window.cancelAnimationFrame(requestId);
+
         // 清空
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -169,7 +174,7 @@ export default {
           if (lineList[i].die) lineList.splice(i, 1);
         }
 
-        window.requestAnimationFrame(draw);
+        requestId = window.requestAnimationFrame(draw);
       }
     },
   },
