@@ -20,7 +20,7 @@ npm install
 npm run dev
 
 ```
-### 提交可能会有2个warning如图
+### 第一次运行可能会有2个warning如图
 
 ![输入图片说明](Readme_picture/warningimage.png)
 ### 进入warning代码注释一行
