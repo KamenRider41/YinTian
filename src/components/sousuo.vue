@@ -1,8 +1,8 @@
 <!--
  * @Author: 41
  * @Date: 2021-11-15 16:38:42
- * @LastEditors: 41
- * @LastEditTime: 2021-11-19 10:32:50
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-12-24 00:38:49
  * @Description:
 -->
 <template>
@@ -101,7 +101,7 @@ export default {
           options
         );
       } else {
-        alert("该浏览器不支持定位");
+        console.log("该浏览器不支持定位");
       }
       
       // 成功回调
@@ -124,18 +124,23 @@ export default {
       }
       // 失败回调
       function error(err) {
+        const geolocation =new BMap.Geolocation();
+        geolocation.getCurrentPosition(function(pos){
+          that.city= pos.address.city;
+          that.$emit("getSearch", pos.address.city);
+        });
         switch (err.code) {
           case 1:
-            alert("位置服务被拒绝！");
+            console.log("位置服务被拒绝！切换模式！");
             break;
           case 2:
-            alert("暂时获取不到位置信息！");
+            console.log("暂时获取不到位置信息！切换模式！");
             break;
           case 3:
-            alert("获取位置信息超时！");
+            console.log("获取位置信息超时！切换模式！");
             break;
           case 4:
-            alert("未知错误！");
+            console.log("未知错误！切换模式！");
             break;
         }
       }
